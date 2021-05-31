@@ -1,0 +1,14 @@
+AddDefaultCharset UTF-8
+<IfModule mod_rewrite.c>
+
+  Options +FollowSymLinks
+  RewriteEngine On
+
+
+RewriteRule (*UTF8)^tag/(.*+)/?$ index.php?tag=$1 [L,QSA]
+RewriteRule (*UTF8)^category/(.*+)/(.*+)/?$ index.php?cat=$1&offset=$1 [L,QSA]
+
+RewriteRule (*UTF8)^coctail/(.*+)/?$ index.php?coctail=$1 [L]
+
+
+</IfModule>
