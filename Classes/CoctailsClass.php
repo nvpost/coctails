@@ -41,8 +41,13 @@ class CoctailsClass
         return $coctails;
     }
 
-    public function getCoctails($ids){
-        $sql = "SELECT * FROM coctails WHERE coctail_id IN({$ids})";
+    public function getCoctails($ids=false){
+        if($ids){
+            $sql = "SELECT * FROM coctails WHERE coctail_id IN({$ids})";
+        }else{
+            $sql = "SELECT * FROM coctails WHERE 1";
+        }
+
         $coctails = pdSql($sql);
 
         return $coctails;
