@@ -23,9 +23,9 @@ require_once 'components/tags.php';
 //echo "<h2>Ингредиенты</h2>";
 //require_once 'components/ingredients.php';
 
-$coctailsClass = new CoctailsClass();
-$coctails = $coctailsClass->getCoctails();
-deb($coctails)
+//$coctailsClass = new CoctailsClass();
+//$coctails = $coctailsClass->getCoctails();
+//deb($coctails)
 
 ?>
 

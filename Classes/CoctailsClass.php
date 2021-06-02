@@ -5,7 +5,7 @@
  * Date: 24.05.2021
  * Time: 17:18
  */
-
+// SELECT coctails.*, tags.* FROM coctails, tags WHERE tags.tag='мятные' AND tags.coctail_id = coctails.coctail_id
 class CoctailsClass
 {
     public $tag_id;
