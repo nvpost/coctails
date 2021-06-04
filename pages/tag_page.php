@@ -1,6 +1,6 @@
 <?php
 
-$coctails = new CoctailsClass();
+$coctails = new oldCoctailsClass();
 $tag = $_GET['tag'];
 $coctailsFromTag = $coctails->getCoctailsFormTag($tag);
 
