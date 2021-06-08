@@ -10,4 +10,8 @@ $allCoctails = $allCoctailsClass->getAll();
 
 $catalogHtml = new CatalogWidgetClass($allCoctails);
 
+echo "<div class='container'>";
+
 echo $catalogHtml->getCatalogItem();
+
+echo "</div>";

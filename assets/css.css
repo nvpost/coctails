@@ -1,4 +1,48 @@
+body{
+    font-family: 'Lobster', cursive;
+}
+a{
+    color: black;
+}
+
 .tags{
     padding: 5px;
+}
 
+.container{
+    width: 1400px;
+    margin: auto;
+    border: 1px solid;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+.catalog_item{
+    width: 300px;
+    border: 1px solid;
+    margin-bottom: 20px;
+    margin-top: 20px;
+    border-radius: 5px;
+    text-decoration: none;
+}
+.catalog_item_label h4{
+    font-size: 2em;
+    text-align: center;
+    margin-bottom: 0.5em;
+}
+.catalog_item_label p{
+    font-size: 1.2em;
+}
+.catalog_item_img{
+    height: 320px;
+    text-align: center;
+    margin: 5px;
+}
+.catalog_item img{
+    height: 100%;
+    max-width: 100%;
+}
+.catalog_item_label {
+    width: fit-content;
+    margin: 10px auto;
 }
