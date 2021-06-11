@@ -45,8 +45,6 @@ class SQLModelClass
     }
 
 
-
-
     //Сделать запрос
     public function prepareQwe(){
         $qwe = "";
@@ -73,7 +71,8 @@ class SQLModelClass
     }
     public function all(){
         $qwe = $this->prepareQwe();
-        deb($qwe);
+        $res->pdSql($qwe, 'a');
+        deb($res);
         return $this;
     }
 }

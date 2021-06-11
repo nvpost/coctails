@@ -17,5 +17,5 @@ echo $catalogHtml->getCatalogItem();
 echo "</div>";
 
 echo "<div class='pagination'>";
-deb($allCoctails->)
+//deb($allCoctails->)
 echo "</div>";
