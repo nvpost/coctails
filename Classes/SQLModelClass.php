@@ -29,15 +29,26 @@ class SQLModelClass
         $this->sqlArray['where'] = $where_str;
         return $this;
     }
+    public function orderBy($orderBy){
+        $this->sqlArray['orderBy'] = $orderBy;
+        return $this;
+    }
+
     public function limit($l){
         $this->sqlArray['limit'] = $l;
         return $this;
     }
 
+    public function offset($offset){
+        $this->sqlArray['offset'] = $offset;
+        return $this;
+    }
+
+
+
 
     //Сделать запрос
-    public function all(){
-        $sql = $this->sqlArray;
+    public function prepareQwe(){
         $qwe = "";
         if(isset($this->sqlArray['select'])){
             $qwe .= "SELECT {$this->sqlArray['select']} ";
@@ -48,13 +59,21 @@ class SQLModelClass
         if(isset($this->sqlArray['where'])){
             $qwe .= "WHERE {$this->sqlArray['where']} ";
         }
+        if(isset($this->sqlArray['orderBy'])){
+            $qwe .= "ORDER BY {$this->sqlArray['orderBy']} ";
+        }
         if(isset($this->sqlArray['limit'])){
             $qwe .= "LIMIT {$this->sqlArray['limit']} ";
-        }else{
-            deb('ff');
         }
+        if(isset($this->sqlArray['offset'])){
+            $qwe .= "OFFSET {$this->sqlArray['offset']} ";
+        }
+
+        return $qwe;
+    }
+    public function all(){
+        $qwe = $this->prepareQwe();
         deb($qwe);
-//        deb($this->sqlArray);
         return $this;
     }
 }
