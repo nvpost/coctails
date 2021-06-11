@@ -7,8 +7,12 @@ require_once 'func.php';
 
 $sqlClass = new SQLModelClass();
 
-$sqlClass->limit(5);
-$sqlClass->where('con = true');
+$sqlClass->table('board')
+    ->select('*')
+    ->limit(5)
+    ->where('con = true')
+    ->all();
+
 
 
 deb($sqlClass->sqlArray);

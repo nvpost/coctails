@@ -16,16 +16,45 @@ class SQLModelClass
     }
 
     public function table($table_str){
-        $row = ['table'=>$table_str];
-        array_push($this->sqlArray, $row);
+        $this->sqlArray['table'] = $table_str;
+        return $this;
+    }
+
+    public function select($select_str){
+        $this->sqlArray['select'] = $select_str;
+        return $this;
     }
 
     public function where($where_str){
-        $row = ['WHERE'=>$where_str];
-        array_push($this->sqlArray, $row);
+        $this->sqlArray['where'] = $where_str;
+        return $this;
     }
     public function limit($l){
-        $row = ['LIMIT'=>'LIMIT '.$l];
-        array_push($this->sqlArray, $row);
+        $this->sqlArray['limit'] = $l;
+        return $this;
+    }
+
+
+    //Сделать запрос
+    public function all(){
+        $sql = $this->sqlArray;
+        $qwe = "";
+        if(isset($this->sqlArray['select'])){
+            $qwe .= "SELECT {$this->sqlArray['select']} ";
+        }
+        if(isset($this->sqlArray['table'])){
+            $qwe .= "FROM {$this->sqlArray['table']} ";
+        }
+        if(isset($this->sqlArray['where'])){
+            $qwe .= "WHERE {$this->sqlArray['where']} ";
+        }
+        if(isset($this->sqlArray['limit'])){
+            $qwe .= "LIMIT {$this->sqlArray['limit']} ";
+        }else{
+            deb('ff');
+        }
+        deb($qwe);
+//        deb($this->sqlArray);
+        return $this;
     }
 }
