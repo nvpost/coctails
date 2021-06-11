@@ -15,3 +15,7 @@ echo "<div class='container'>";
 echo $catalogHtml->getCatalogItem();
 
 echo "</div>";
+
+echo "<div class='pagination'>";
+deb($allCoctails->)
+echo "</div>";

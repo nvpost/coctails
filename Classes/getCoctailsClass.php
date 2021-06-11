@@ -10,6 +10,7 @@ class getCoctailsClass
 {
     protected $limit;
     protected $page_offset;
+    public $pages;
 
 
     public function __construct()
@@ -20,6 +21,7 @@ class getCoctailsClass
     public function getAll(){
         $sql = "SELECT * FROM coctails WHERE 1 LIMIT ".$this->limit;
         $coctails = pdSql($sql);
+        $this->pagination();
         return $coctails;
     }
 
@@ -32,6 +34,17 @@ class getCoctailsClass
     }
 
     public function getFromTagsAndIngredients(){
+
+    }
+
+    public function pagination($all=true){
+        if($all){
+            $sql = "SELECT * FROM coctails WHERE 1 ".$this->limit;
+            $res = pdSql($sql);
+            $pages = count($res);
+            $this->pages = $pages;
+            return $pages;
+        }
 
     }
 }
