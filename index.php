@@ -4,7 +4,7 @@
 <?php
 $home_url = "http://localhost/coctails/";
 
-require_once 'sql/sql.php';
+//require_once 'sql/sql.php';
 require_once 'func.php';
 
 

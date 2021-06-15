@@ -1,6 +1,6 @@
 <?php
 
-
+require_once 'sql/sql.php';
 function deb($v, $h=0){
     if($h) echo "<hr>";
     echo "<pre>";

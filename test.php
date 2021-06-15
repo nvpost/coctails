@@ -7,10 +7,10 @@ require_once 'func.php';
 
 $sqlClass = new SQLModelClass();
 
-$sqlClass->table('board')
+$sqlClass->table('coctails')
     ->select('*')
     ->limit(5)
-    ->where('con = true')
+    ->where(1)
     ->all();
 
 
