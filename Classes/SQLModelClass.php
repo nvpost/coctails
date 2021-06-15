@@ -44,10 +44,18 @@ class SQLModelClass
         return $this;
     }
 
+    public function count(){
+
+        $qwe = $this->prepareQwe();
+        $res = pdSql($qwe);
+        return count($res);
+    }
+
 
     //Сделать запрос
     public function prepareQwe(){
         $qwe = "";
+
         if(isset($this->sqlArray['select'])){
             $qwe .= "SELECT {$this->sqlArray['select']} ";
         }
@@ -66,13 +74,12 @@ class SQLModelClass
         if(isset($this->sqlArray['offset'])){
             $qwe .= "OFFSET {$this->sqlArray['offset']} ";
         }
-
         return $qwe;
     }
     public function all(){
         $qwe = $this->prepareQwe();
         $res = pdSql($qwe);
-        deb($res);
-        return $this;
+//        deb($res);
+        return $res;
     }
 }

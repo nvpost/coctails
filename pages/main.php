@@ -5,8 +5,22 @@ spl_autoload_register(function ($class_name) {
 
 
 
-$allCoctailsClass = new getCoctailsClass();
-$allCoctails = $allCoctailsClass->getAll();
+
+
+$sqlClass = new SQLModelClass();
+$countCoctailsClass = new SQLModelClass();
+
+$allCoctails = $sqlClass->table('coctails')
+    ->select('*')
+    ->limit($limit)
+    ->where(1)
+    ->all();
+
+$countCoctails = $countCoctailsClass->table('coctails')
+    ->select('*')
+    ->where(1)
+    ->count();
+
 
 $catalogHtml = new CatalogWidgetClass($allCoctails);
 
@@ -17,5 +31,6 @@ echo $catalogHtml->getCatalogItem();
 echo "</div>";
 
 echo "<div class='pagination'>";
-//deb($allCoctails->)
+//    deb($countCoctails);
+    drowPagination($countCoctails);
 echo "</div>";

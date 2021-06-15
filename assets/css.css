@@ -46,3 +46,15 @@ a{
     width: fit-content;
     margin: 10px auto;
 }
+
+.pagination{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+a.page{
+    padding: 5px;
+    border: 1px solid;
+    border-radius: 5px;
+    margin: 5px;
+}

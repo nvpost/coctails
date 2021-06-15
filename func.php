@@ -30,3 +30,5 @@ function pdSql($sql, $one=false){
     return($data);
 
 }
+
+require_once 'config.php';
