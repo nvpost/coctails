@@ -9,7 +9,7 @@ require_once 'func.php';
 require_once 'components/pagination.php';
 
 
-
+deb($_GET);
 
 if(isset($_GET['tag'])){
     require_once "pages/tag_page.php";

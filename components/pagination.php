@@ -5,6 +5,6 @@ function drowPagination($c){
 //    deb($pages);
     for ($i=0; $i<$pages; $i++){
         $p = $i+1;
-        echo "<a class='page' href='{$p}'>{$p}</a>";
+        echo "<a class='page' href='page={$p}'>{$p}</a>";
     }
 }
