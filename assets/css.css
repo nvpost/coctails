@@ -59,8 +59,10 @@ a.page{
     border: 1px solid;
     border-radius: 5px;
     margin: 5px;
+    text-decoration: none;
 }
 a.active_page{
     background-color: gold;
     color: #fff;
+    border: 1px solid gold;
 }
