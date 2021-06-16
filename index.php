@@ -8,12 +8,16 @@ $home_url = "http://localhost/coctails/";
 require_once 'func.php';
 require_once 'components/pagination.php';
 
-
-deb($_GET);
+$page = 0;
+if(isset($_GET['page'])){
+    $page = $_GET['page']-1;
+}
 
 if(isset($_GET['tag'])){
     require_once "pages/tag_page.php";
-}else{
+}
+else{
+
     require_once "pages/main.php";
 }
 

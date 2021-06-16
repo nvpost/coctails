@@ -6,7 +6,12 @@ spl_autoload_register(function ($class_name) {
 
 
 
+//deb($page);
 
+$frontStart = $page*$limit+1;
+$frontFin = ($page+1)*$limit;
+
+$set_limit = $page*$limit.", ".$limit;
 
 
 $sqlClass = new SQLModelClass();
@@ -14,10 +19,10 @@ $countCoctailsClass = new SQLModelClass();
 
 $allCoctails = $sqlClass->table('coctails')
     ->select('*')
-    ->limit($limit)
+    ->limit($set_limit)
     ->where(1)
     ->all();
-
+//deb($set_limit);
 $countCoctails = $countCoctailsClass->table('coctails')
     ->select('*')
     ->where(1)
@@ -26,6 +31,10 @@ $countCoctails = $countCoctailsClass->table('coctails')
 
 $catalogHtml = new CatalogWidgetClass($allCoctails);
 
+
+
+
+require_once 'components/page_header.php';
 echo "<div class='container'>";
 
 echo $catalogHtml->getCatalogItem();

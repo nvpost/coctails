@@ -74,6 +74,7 @@ class SQLModelClass
         if(isset($this->sqlArray['offset'])){
             $qwe .= "OFFSET {$this->sqlArray['offset']} ";
         }
+//        deb($qwe);
         return $qwe;
     }
     public function all(){
