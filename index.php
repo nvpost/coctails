@@ -1,3 +1,10 @@
+<?php
+spl_autoload_register(function ($class_name) {
+    include 'Classes/'.$class_name . '.php';
+});
+
+?>
+
 <link href="<?=$home_url?>assets/css.css" rel="stylesheet">
 <link rel="preconnect" href="https://fonts.gstatic.com">
 <link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet">
