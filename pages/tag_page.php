@@ -1,6 +1,6 @@
 <?php
 
-deb($_GET);
+//deb($_GET);
 
 //SELECT coctails.*, tags.* FROM coctails, tags WHERE tags.tag='мятные' AND tags.coctail_id = coctails.coctail_id
 $tag = $_GET['tag'];
@@ -17,17 +17,22 @@ $allCoctails = $sqlClass->table($table)
     ->where($where)
     ->all();
 //deb($set_limit);
-//$countCoctails = $countCoctailsClass->table('coctails')
-//    ->select('*')
-//    ->where(1)
-//    ->count();
+$countCoctails = $countCoctailsClass->table($table)
+    ->select($select)
+    ->where($where)
+    ->count();
 
-deb($allCoctails);
-//$coctails = new oldCoctailsClass();
-//$tag = $_GET['tag'];
-//$coctailsFromTag = $coctails->getCoctailsFormTag($tag);
-//
-//deb(count($coctailsFromTag));
-//
-//deb($coctailsFromTag);
+//deb($countCoctails);
+//deb($allCoctails);
+
+
+$catalogHtml = new CatalogWidgetClass($allCoctails);
+echo "<div class='container'>";
+echo $catalogHtml->getCatalogItem();
+
+echo "</div>";
+
+echo "<div class='pagination'>";
+    drowPagination($countCoctails);
+echo "</div>";
 

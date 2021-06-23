@@ -1,4 +1,5 @@
 <?php
+$home_url = "http://localhost/coctails/";
 spl_autoload_register(function ($class_name) {
     include 'Classes/'.$class_name . '.php';
 });
@@ -9,7 +10,7 @@ spl_autoload_register(function ($class_name) {
 <link rel="preconnect" href="https://fonts.gstatic.com">
 <link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet">
 <?php
-$home_url = "http://localhost/coctails/";
+
 
 //require_once 'sql/sql.php';
 require_once 'func.php';
@@ -28,15 +29,6 @@ else{
     require_once "pages/main.php";
 }
 
-//echo "<h2>Категории</h2>";
-//require_once 'components/tags.php';
-
-//echo "<h2>Ингредиенты</h2>";
-//require_once 'components/ingredients.php';
-
-//$coctailsClass = new CoctailsClass();
-//$coctails = $coctailsClass->getCoctails();
-//deb($coctails)
 
 ?>
 

@@ -6,10 +6,7 @@ require_once 'components/tags.php';
 
 //deb($page);
 
-$frontStart = $page*$limit+1;
-$frontFin = ($page+1)*$limit;
 
-$set_limit = $page*$limit.", ".$limit;
 
 
 $sqlClass = new SQLModelClass();
