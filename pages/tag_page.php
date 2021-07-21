@@ -1,12 +1,13 @@
 <?php
+$active_tag = $_GET['tag'];
+require_once 'components/tags.php';
 
-//deb($_GET);
 
-//SELECT coctails.*, tags.* FROM coctails, tags WHERE tags.tag='мятные' AND tags.coctail_id = coctails.coctail_id
-$tag = $_GET['tag'];
+
+
 $table = 'coctails, tags';
 $select = 'coctails.*, tags.*';
-$where = "tags.tag='мятные' AND tags.coctail_id = coctails.coctail_id";
+$where = "tags.tag='".$active_tag."' AND tags.coctail_id = coctails.coctail_id";
 
 $sqlClass = new SQLModelClass();
 $countCoctailsClass = new SQLModelClass();
@@ -27,10 +28,12 @@ $countCoctails = $countCoctailsClass->table($table)
 
 
 $catalogHtml = new CatalogWidgetClass($allCoctails);
-echo "<div class='container'>";
-echo $catalogHtml->getCatalogItem();
 
-echo "</div>";
+require_once 'components/page_header.php';
+
+
+$catalog = $catalogHtml->getCatalogItem();
+require_once 'components/catalogWidget.php';
 
 echo "<div class='pagination'>";
     drowPagination($countCoctails);

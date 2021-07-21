@@ -13,13 +13,27 @@ spl_autoload_register(function ($class_name) {
 
 
 //require_once 'sql/sql.php';
-require_once 'func.php';
-require_once 'components/pagination.php';
 
 $page = 0;
 if(isset($_GET['page'])){
     $page = $_GET['page']-1;
 }
+
+$page_tags = [];
+if(isset($_GET['tag'])){
+    foreach (explode(",",$_GET['tag']) as $item){
+        array_push($page_tags, $item);
+    }
+}
+
+
+require_once 'func.php';
+require_once 'components/pagination.php';
+
+
+deb($_GET);
+
+//require_once "pages/main.php";
 
 if(isset($_GET['tag'])){
     require_once "pages/tag_page.php";

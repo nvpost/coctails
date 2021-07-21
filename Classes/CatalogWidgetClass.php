@@ -34,7 +34,7 @@ class CatalogWidgetClass
 
         $catalog_item_html .= "<div class='catalog_item_label'>";
         $catalog_item_html .= "<div class='catalog_item_label_inner'>";
-        $catalog_item_html .="<h4>{$item['name']}</h4>";
+        $catalog_item_html .="<h3>{$item['name']}</h3>";
         $catalog_item_html .="<p>{$item['en_name']}</p>";
         $catalog_item_html .= "</div>";
         $catalog_item_html .= "</div>";

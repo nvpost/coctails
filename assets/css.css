@@ -8,14 +8,23 @@ a{
 .tags{
     padding: 5px;
 }
+.tags_active{
+    color: gold;
+}
 
 .container{
     width: 1400px;
     margin: auto;
+
+}
+.catalog_container{
     border: 1px solid;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-evenly;
+}
+.page_header_title{
+    display:flex;
 }
 .catalog_item{
     width: 300px;
@@ -25,8 +34,11 @@ a{
     border-radius: 5px;
     text-decoration: none;
 }
-.catalog_item_label h4{
-    font-size: 2em;
+.catalog_item_label_inner {
+    text-align: center;
+}
+.catalog_item_label h3{
+    font-size: 2.2em;
     text-align: center;
     margin-bottom: 0.5em;
 }
