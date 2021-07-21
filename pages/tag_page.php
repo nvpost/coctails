@@ -1,8 +1,5 @@
 <?php
 $active_tag = $_GET['tag'];
-require_once 'components/tags.php';
-
-
 
 
 $table = 'coctails, tags';

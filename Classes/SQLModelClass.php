@@ -79,7 +79,16 @@ class SQLModelClass
     }
     public function all(){
         $qwe = $this->prepareQwe();
+//        deb($qwe);
         $res = pdSql($qwe);
+//        deb($res);
+        return $res;
+    }
+
+    public function one(){
+        $qwe = $this->prepareQwe();
+//        deb($qwe);
+        $res = pdSql($qwe, 'one');
 //        deb($res);
         return $res;
     }

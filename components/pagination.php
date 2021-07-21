@@ -23,7 +23,8 @@ function drowPagination($c){
 
     if($page>$pagintation_step){
         $prev_page = $start_point;
-        echo "<a class='page' href='page={$prev_page}'>&lsaquo;</a>";
+        $href = $part_link . $prev_page;
+        echo "<a class='page' href={$href}>&lsaquo;</a>";
     }
 
 
@@ -31,12 +32,12 @@ function drowPagination($c){
     for ($i=$start_point; $i<$fin_point; $i++){
         $p = $i+1;
         $href = $part_link . "&page={$p}";
-//        deb($href);
         $active = ($page==$i)?'active_page':'';
         echo "<a class='page {$active}' href={$href}>{$p}</a>";
     }
     if($fin_point<$pages){
         $next_page = $fin_point+1;
-        echo "<a class='page' href='page={$next_page}'>&rsaquo;</a>";
+        $href = $part_link . $next_page;
+        echo "<a class='page' href={$href}>&rsaquo;</a>";
     }
 }

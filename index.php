@@ -21,6 +21,7 @@ if(isset($_GET['page'])){
 
 $page_tags = [];
 if(isset($_GET['tag'])){
+    $active_tag = $_GET['tag'];
     foreach (explode(",",$_GET['tag']) as $item){
         array_push($page_tags, $item);
     }
@@ -33,13 +34,21 @@ require_once 'components/pagination.php';
 
 deb($_GET);
 
+
+
+//require_once 'components/ingredients.php';
+//
 //require_once "pages/main.php";
 
-if(isset($_GET['tag'])){
-    require_once "pages/tag_page.php";
+
+//if(isset($_GET['tag'])){
+//    require_once "pages/tag_page.php";
+//}
+if(isset($_GET['coctail'])){
+    require_once "pages/coctail_page.php";
 }
 else{
-
+    require_once 'components/tags.php';
     require_once "pages/main.php";
 }
 

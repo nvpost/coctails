@@ -2,7 +2,7 @@
 
 
 
-require_once 'components/tags.php';
+
 
 //deb($page);
 
@@ -12,14 +12,26 @@ require_once 'components/tags.php';
 $sqlClass = new SQLModelClass();
 $countCoctailsClass = new SQLModelClass();
 
+if($_GET['tag']){
+    $active_tag = $_GET['tag'];
+
+    $table = 'coctails, tags';
+    $select = 'coctails.*, tags.*';
+    $where = "tags.tag='".$active_tag."' AND tags.coctail_id = coctails.coctail_id";
+}
+
+else{
+    $table = 'coctails';
+    $select = '*';
+    $where = 1;
+}
 
 
-$allCoctails = $sqlClass->table('coctails')
-    ->select('*')
+$allCoctails = $sqlClass->table($table)
+    ->select($select)
     ->limit($set_limit)
-    ->where(1)
+    ->where($where)
     ->all();
-
 
 //deb($set_limit);
 $countCoctails = $countCoctailsClass->table('coctails')
