@@ -1,14 +1,6 @@
 <?php
 
 
-
-
-
-//deb($page);
-
-
-
-
 $sqlClass = new SQLModelClass();
 $countCoctailsClass = new SQLModelClass();
 

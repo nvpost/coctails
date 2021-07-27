@@ -1,13 +1,14 @@
 <?php
+
 ?>
 
-<div class="ingredients_field">
-    <h4>Ингридиенты</h4>
+<div class="tools_field">
+    <h4>Посуда и приборы</h4>
     <table>
-        <?php foreach ($coctail_ingredients as $i):?>
+        <?php foreach ($coctail_tools as $i):?>
             <tr>
                 <td class="tool_name">
-                    <?=doLink('ingredient', $i['ingredient'])?>
+                    <?=doLink('tools', $i['name'])?>
                 </td>
                 <td>
                     <?=$i['amount']?>

@@ -8,7 +8,9 @@ spl_autoload_register(function ($class_name) {
 
 <link href="<?=$home_url?>assets/css.css" rel="stylesheet">
 <link rel="preconnect" href="https://fonts.gstatic.com">
-<link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet">
+<!--<link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet">-->
+
+<div class="app_container">
 <?php
 
 
@@ -32,7 +34,7 @@ require_once 'func.php';
 require_once 'components/pagination.php';
 
 
-deb($_GET);
+//deb($_GET);
 
 
 

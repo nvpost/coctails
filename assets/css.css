@@ -4,6 +4,9 @@ body{
 a{
     color: black;
 }
+h4{
+    font-size: 1.6em;
+}
 
 .tags{
     padding: 5px;
@@ -12,8 +15,9 @@ a{
     color: gold;
 }
 
-.container{
-    width: 1200px;
+.app_container{
+    width: 80%;
+    max-width: 1200px;
     margin: auto;
 
 }
@@ -77,4 +81,20 @@ a.active_page{
     background-color: gold;
     color: #fff;
     border: 1px solid gold;
+}
+
+
+/*coctail_page*/
+.coctail_start_content{
+    display: flex;
+    justify-content: space-between;
+}
+.coctail_page_content>div{
+    flex:1;
+}
+.tool_name{
+    width: 250px;
+}
+.tool_amount{
+    width: 50px;
 }
