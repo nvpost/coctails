@@ -46,6 +46,10 @@ else if(isset($_GET['ingredient'])){
     require_once "pages/ingredient_page.php";
     require_once "pages/main.php";
 }
+else if(isset($_GET['tag'])){
+    require_once "pages/tag_page.php";
+    require_once "pages/main.php";
+}
 else{
     require_once 'components/tags.php';
     require_once "pages/main.php";

@@ -40,4 +40,6 @@ function drowPagination($c){
         $href = $part_link . $next_page;
         echo "<a class='page' href={$href}>&rsaquo;</a>";
     }
+
+    echo " <span class='count_pages_and_items'>(".$c." / ".$pages.")</span>";
 }

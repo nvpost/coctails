@@ -45,7 +45,7 @@ class SQLModelClass
     }
 
     public function count(){
-
+        //deb($qwe);
         $qwe = $this->prepareQwe();
         $res = pdSql($qwe);
         return count($res);
