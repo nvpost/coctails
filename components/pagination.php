@@ -31,7 +31,7 @@ function drowPagination($c){
 
     for ($i=$start_point; $i<$fin_point; $i++){
         $p = $i+1;
-        $href = $part_link . "&page={$p}";
+        $href = ($part_link)?"'".$part_link . "&page={$p}'":"page={$p}";
         $active = ($page==$i)?'active_page':'';
         echo "<a class='page {$active}' href={$href}>{$p}</a>";
     }

@@ -6,6 +6,7 @@ $part_link = "";
 $part_link = ($page)? $home_url."page={$page}":$home_url;
 
 echo "<div class='tag_container'>";
+echo "<h4>Категории</h4>";
 foreach ($tags->tags as $k =>$tag){
     $t = $tag['tag'];
 
