@@ -32,3 +32,14 @@ function pdSql($sql, $one=false){
 }
 
 require_once 'config.php';
+
+
+function cid($i){
+    return $i['coctail_id'];
+}
+function getCoctailIds($arr){
+    $res = array_map('cid', $arr);
+    $res = array_unique($res);
+    $res = implode(', ', $res);
+    return $res;
+}

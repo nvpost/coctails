@@ -12,6 +12,14 @@ if($_GET['tag']){
     $where = "tags.tag='".$active_tag."' AND tags.coctail_id = coctails.coctail_id";
 }
 
+else if($_GET['tools']){
+    $active_tool = $_GET['tools'];
+
+    $table = 'coctails, tools';
+    $select = 'coctails.*, tools.coctail_id, tools.name as tool_name';
+    $where = "tools.name='".$active_tool."' AND tools.coctail_id = coctails.coctail_id";
+}
+
 else{
     $table = 'coctails';
     $select = '*';

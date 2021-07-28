@@ -17,7 +17,7 @@ class TagClass
     }
 
     private function getTags($coctail_id){
-        $where = ($coctail_id)?" coctail_id=".$coctail_id : 1;
+        $where = ($coctail_id)?" coctail_id IN(".$coctail_id.")" : 1;
         $sql = "SELECT DISTINCT tag FROM tags WHERE ".$where;
         $tags = pdSql($sql);
         return $tags;

@@ -1,5 +1,6 @@
 <?php
-$tags = new TagClass($coctail_id );
+
+$tags = new TagClass($coctail_id);
 
 $part_link = "";
 $part_link = ($page)? $home_url."page={$page}":$home_url;

@@ -34,20 +34,17 @@ require_once 'func.php';
 require_once 'components/pagination.php';
 
 
-//deb($_GET);
 
-
-
-//require_once 'components/ingredients.php';
-//
-//require_once "pages/main.php";
-
-
-//if(isset($_GET['tag'])){
-//    require_once "pages/tag_page.php";
-//}
 if(isset($_GET['coctail'])){
     require_once "pages/coctail_page.php";
+}
+else if(isset($_GET['tools'])){
+    require_once "pages/tools_page.php";
+    require_once "pages/main.php";
+}
+else if(isset($_GET['ingredient'])){
+    require_once "pages/ingredient_page.php";
+    require_once "pages/main.php";
 }
 else{
     require_once 'components/tags.php';
