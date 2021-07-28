@@ -85,6 +85,10 @@ a.active_page{
 
 
 /*coctail_page*/
+.coctail_page_container{
+    width: 800px;
+    margin: auto;
+}
 .coctail_start_content{
     display: flex;
     justify-content: space-between;
