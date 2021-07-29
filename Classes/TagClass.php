@@ -18,8 +18,12 @@ class TagClass
 
     private function getTags($coctail_id){
         $where = ($coctail_id)?" coctail_id IN(".$coctail_id.")" : 1;
-        $sql = "SELECT DISTINCT tag FROM tags WHERE ".$where;
+        $sql = "SELECT tag FROM tags WHERE ".$where." order by tag DESC";
         $tags = pdSql($sql);
         return $tags;
+    }
+
+    public function getTagCoctailCount(){
+        deb($this->tags);
     }
 }

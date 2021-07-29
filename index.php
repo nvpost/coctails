@@ -13,6 +13,15 @@ spl_autoload_register(function ($class_name) {
 <div class="app_container">
 <?php
 
+require_once 'func.php';
+
+
+
+function dooUrl(){
+    return deb($_GET);
+}
+
+//dooUrl();
 
 //require_once 'sql/sql.php';
 
@@ -30,7 +39,7 @@ if(isset($_GET['tag'])){
 }
 
 
-require_once 'func.php';
+
 require_once 'components/pagination.php';
 
 
