@@ -11,8 +11,9 @@ $part_link = ($page)? $home_url."page={$page}":$home_url;
 echo "<div class='tag_container'>";
 echo "<h4>Категории</h4>";
 
-$flat_tags = array_count_values(array_column($tags->tags, 'tag'));
-foreach ($flat_tags as $k =>$count){
+$flat_tags = array_column($tags->tags, 'tag');
+$flat_tags_with_count = array_count_values($flat_tags);
+foreach ($flat_tags_with_count as $k =>$count){
     $t = $k;
 
     $href = $home_url.'tag='.$t;

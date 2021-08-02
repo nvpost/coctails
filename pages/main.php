@@ -48,11 +48,9 @@ $allCoctails = $sqlClass->table($table)
 
 $catalogHtml = new CatalogWidgetClass($allCoctails);
 
-
-
-
-
 $catalog = $catalogHtml->getCatalogItem();
+
+
 require_once 'components/catalogWidget.php';
 
 echo "<div class='pagination'>";

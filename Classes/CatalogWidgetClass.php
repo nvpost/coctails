@@ -15,6 +15,7 @@ class CatalogWidgetClass
         $this->coctails = $coctails;
     }
 
+
     public function getCatalogItem(){
         $catalogHtml="";
         foreach($this->coctails as $k=>$item){

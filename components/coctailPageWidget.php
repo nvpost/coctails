@@ -57,5 +57,12 @@ function doLink($what, $l){
                 ?>
             </div>
         </div>
+        <div class="coctail_bottom_content">
+            <div class="more_from_tag">
+                <?php
+                    require_once 'more_block/moreForTags.php';
+                ?>
+            </div>
+        </div>
     </div>
 </div>
