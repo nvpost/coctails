@@ -102,3 +102,16 @@ a.active_page{
 .tool_amount{
     width: 50px;
 }
+
+/*доп коктейли*/
+/*.more_from_tag .catalog_container{*/
+    /*flex-wrap: nowrap;*/
+/*}*/
+
+.more_from .catalog_item{
+    width: 25%;
+    border: none;
+}
+.more_from .catalog_item_label h3{
+    font-size: 1.6em;
+}

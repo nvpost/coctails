@@ -58,10 +58,25 @@ function doLink($what, $l){
             </div>
         </div>
         <div class="coctail_bottom_content">
-            <div class="more_from_tag">
+            <div class="more_from more_from_tag">
+                <h3>Похожие коктейли</h3>
                 <?php
                     require_once 'more_block/moreForTags.php';
                 ?>
+            </div>
+
+            <div class="more_from more_from_ing">
+                <h3>Коктейли из тех же ингредиентов</h3>
+                <?php
+                    require_once 'more_block/moreForIng.php';
+                ?>
+            </div>
+
+            <div class="more_from more_from_ing">
+                <h3>Коктейли с такими же аксессуарами</h3>
+                    <?php
+                        require_once 'more_block/moreForTools.php';
+                    ?>
             </div>
         </div>
     </div>
