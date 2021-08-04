@@ -18,11 +18,16 @@ require_once 'func.php';
 
 
 
-function dooUrl(){
-    return deb($_GET);
-}
+function dooUrl($rout = false){
+    $commonUrl = false;
+    foreach ($_GET as $k => $v){
+        $commonUrl="&".$k=$v;
+    }
+    return $commonUrl;
 
-//dooUrl();
+}
+deb($_GET);
+deb(dooUrl());
 
 //require_once 'sql/sql.php';
 
