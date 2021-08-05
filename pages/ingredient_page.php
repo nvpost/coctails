@@ -15,6 +15,3 @@ $coctail_ids = $sqlClass->table("ingredients")
 
 $coctail_id = getCoctailIds($coctail_ids);
 
-require_once 'components/tags.php';
-
-require_once 'main.php';

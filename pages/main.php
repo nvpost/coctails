@@ -43,7 +43,8 @@ $allCoctails = $sqlClass->table($table)
     ->all();
 
 
-//deb($countCoctails);
+deb($countCoctails);
+deb($set_limit);
 
 
 $catalogHtml = new CatalogWidgetClass($allCoctails);

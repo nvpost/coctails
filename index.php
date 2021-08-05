@@ -17,19 +17,8 @@ spl_autoload_register(function ($class_name) {
 require_once 'func.php';
 
 
-
-function dooUrl($rout = false){
-    $commonUrl = false;
-    foreach ($_GET as $k => $v){
-        $commonUrl="&".$k=$v;
-    }
-    return $commonUrl;
-
-}
 deb($_GET);
-deb(dooUrl());
 
-//require_once 'sql/sql.php';
 
 $page = 0;
 if(isset($_GET['page'])){
@@ -37,12 +26,10 @@ if(isset($_GET['page'])){
 }
 
 $page_tags = [];
-if(isset($_GET['tag'])){
-    $active_tag = $_GET['tag'];
-    foreach (explode(",",$_GET['tag']) as $item){
-        array_push($page_tags, $item);
-    }
-}
+
+
+
+
 
 
 
@@ -55,20 +42,20 @@ if(isset($_GET['coctail'])){
 }
 else if(isset($_GET['tools'])){
     require_once "pages/tools_page.php";
-    require_once "pages/main.php";
+    require_once 'components/requireBlocks.php';
 }
 else if(isset($_GET['ingredient'])){
     require_once "pages/ingredient_page.php";
-    require_once "pages/main.php";
+    require_once 'components/requireBlocks.php';
 }
 else if(isset($_GET['tag'])){
     require_once "pages/tag_page.php";
-    require_once "pages/main.php";
+    require_once 'components/requireBlocks.php';
 }
 else{
-    require_once 'components/tags.php';
-    require_once "pages/main.php";
+    require_once 'components/requireBlocks.php';
 }
+
 
 
 ?>
