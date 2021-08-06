@@ -17,7 +17,7 @@ spl_autoload_register(function ($class_name) {
 require_once 'func.php';
 
 
-deb($_GET);
+//deb($_GET);
 
 
 $page = 0;

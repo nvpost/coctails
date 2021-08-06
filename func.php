@@ -53,24 +53,50 @@ function flatAndCount($arr, $key){
     return $arr;
 }
 
-function doRoute(){
+
+function prepareUrl(){
+    $s = $_SERVER['QUERY_STRING'];
+    if(!$s){
+        return false;
+    }
+    $queDataArr = explode('&', $s);
+    $filters = [];
+    foreach ($queDataArr as $que){
+        $filtersData = explode("=", $que);
+        if(isset($filters[$filtersData[0]])){
+            $unitedValue = $filters[$filtersData[0]].';'.$filtersData[1];
+            $filters[$filtersData[0]] = $unitedValue;
+        }else{
+            $filters[$filtersData[0]] = $filtersData[1];
+        }
+    }
+
+    return $filters;
+}
+deb(prepareUrl());
+
+
+function doRoute($key){
     $routeUrl="";
     $routeArr = [];
-    if(isset($_GET)){
-        foreach ($_GET as $key => $val){
+    $getUrl = prepareUrl();
+    if($getUrl){
+        foreach ($getUrl as $key => $val){
             array_push($routeArr, "{$key}=$val");
         }
     }
     $routeUrl = implode("&",$routeArr);
+
     return $routeUrl;
 }
 
 function dooToolsContent($arr, $key, $active_tag){
     global $home_url;
     foreach ($arr as $k =>$count){
-        $label = $k;
+        $label = trim($k);
 
-        $href=(doRoute()) ? $home_url.doRoute().'&'.$key.'='.$label:$home_url.$key.'='.$label;
+        $partfOfUrl = doRoute($key);
+        $href=($partfOfUrl) ? $home_url.$partfOfUrl.'&'.$key.'='.$label:$home_url.$key.'='.$label;
         $class = ($label == $active_tag) ? 'tags tags_active' : 'tags';
         echo "<a class='{$class}' href='{$href}'>".str_replace(" ", "&nbsp;", $label)."&nbsp;(".$count.")</a> ";
     }

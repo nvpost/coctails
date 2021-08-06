@@ -1,14 +1,15 @@
 <?php
+$filters = prepareUrl();
 
-$tags = new ToolsClass('tags', 'tag');
+$tags = new ToolsClass('tags', 'tag'); //false, filters
+
+//$tags->getFilteredTags($filters);
+
+
 $tags = $tags->tools;
 
 
-//$tags ->getTagCoctailCount();
 
-
-//$part_link = "";
-//$part_link = ($page)? $home_url."page={$page}":$home_url;
 
 echo "<div class='tag_container'>";
 echo "<h4>Категории</h4>";
