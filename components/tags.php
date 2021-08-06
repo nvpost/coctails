@@ -1,5 +1,5 @@
 <?php
-$filters = prepareUrl();
+//$filters = prepareUrl();
 
 $tags = new ToolsClass('tags', 'tag'); //false, filters
 
