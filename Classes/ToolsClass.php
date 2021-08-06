@@ -53,8 +53,9 @@ class ToolsClass
         $coctail_id = "'" .implode("', '", $coctail_id) ."'";
 
 //        deb($coctail_id);
-        $relativeTags = $this->getTags($coctail_id);
-        deb($relativeTags);
+//        $relativeTags = $this->getTags($coctail_id);
+//        deb($relativeTags)
+        $this->tools =  $this->getTags($coctail_id);
 
 
 

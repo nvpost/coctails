@@ -1,9 +1,9 @@
 <?php
-//$filters = prepareUrl();
+$filters = prepareUrl();
 
 $tags = new ToolsClass('tags', 'tag'); //false, filters
 
-//$tags->getFilteredTags($filters);
+$tags->getFilteredTags($filters);
 
 
 $tags = $tags->tools;
