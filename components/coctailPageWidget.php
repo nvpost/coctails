@@ -31,7 +31,7 @@ function doLink($what, $l){
             </div>
             <div class="coctail_page_info">
                 <?php
-                    $table_name = "Ингридиенты";
+                    $table_name = "Ингредиенты";
                     $label = "ingredient";
                     $what = "ingredient";
                     $tools_arr = $coctail_ingredients;

@@ -2,7 +2,7 @@
 ?>
 
 <div class="ingredients_field">
-    <h4>Ингридиенты</h4>
+    <h4>Ингредиенты</h4>
     <table>
         <?php foreach ($coctail_ingredients as $i):?>
             <tr>
