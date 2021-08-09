@@ -72,10 +72,8 @@ function prepareUrl(){
 
     return $filters;
 }
-deb(prepareUrl());
 
-
-function doRoute($key){
+function doRoute(){
     $routeUrl="";
     $routeArr = [];
     $getUrl = prepareUrl();
@@ -89,16 +87,20 @@ function doRoute($key){
     return $routeUrl;
 }
 
-function dooToolsContent($arr, $key, $active_tag){
+function dooToolsContent($arr, $key, $filter){
     global $home_url;
+    $filterArr = explode(";",$filter[$key]);
+
     foreach ($arr as $k =>$count){
         $label = trim($k);
 
         $partfOfUrl = doRoute($key);
         $href=($partfOfUrl) ? $home_url.$partfOfUrl.'&'.$key.'='.$label:$home_url.$key.'='.$label;
-        $class = ($label == $active_tag) ? 'tags tags_active' : 'tags';
+        $class = (in_array($label, $filterArr)) ? 'tags tags_active' : 'tags';
+        $class = ($count<5)?  $class.' less_than_needed' : $class;
         echo "<a class='{$class}' href='{$href}'>".str_replace(" ", "&nbsp;", $label)."&nbsp;(".$count.")</a> ";
     }
+    echo "<span class='show_less'>Показать все</span>";
 }
 
 
@@ -106,3 +108,6 @@ $active_tag = $_GET['tag'];
 $active_page = ($_GET['page'])?". Страница - ".$_GET['page']:false;
 
 $active_ingredient = $_GET['ingredient'];
+
+$filters = prepareUrl();
+deb($filters);

@@ -14,12 +14,17 @@ h4{
 .tags_active{
     color: gold;
 }
+.less_than_needed{
+    display: none;
+}
+.show_less{
+    cursor: pointer;
+}
 
 .app_container{
     width: 80%;
     max-width: 1200px;
     margin: auto;
-
 }
 .catalog_container{
     border: 1px solid;

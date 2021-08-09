@@ -32,39 +32,35 @@ class ToolsClass
     }
 
     public function getFilteredTags($filters){
-
         if(!$filters){
             return false;
         }
         $this->unionIds = [];
 
-        deb($filters);
         $c_ids_arr = [];
         foreach ($filters as $table => $val){
-
             $val = explode(';', $val);
             foreach ($val as $v){
+                if($table == 'tag'){
+                    $where = "tags.tag = '".$v."'";
+                }
+                if($table == 'ingredient'){
+                    $where = "ingredients.ingredient = '".$v."'";
+                }
                 $sql = "SELECT DISTINCT coctails.coctail_id  FROM coctails, tags, ingredients 
-                      WHERE tags.tag = '".$v."'
+                      WHERE {$where}
                       AND coctails.coctail_id = tags.coctail_id";
+//                deb($sql);
                 $flat_c_ids = pdSql($sql);
                 $flat_c_ids = array_column($flat_c_ids, 'coctail_id');
                 $this->unionIds = (count($this->unionIds)==0) ? $flat_c_ids : array_intersect($this->unionIds, $flat_c_ids);
-//                deb(count($flat_c_ids));
                 $c_ids_arr[] = $flat_c_ids;
             }
-
-
         }
 
-//        deb(count($this->unionIds));
         $coctail_id = "'" .implode("', '", $this->unionIds) ."'";
 
         $relativeTags = $this->getTags($coctail_id);
-//        deb(count($relativeTags));
         $this->tools = $relativeTags;
-
-
-
     }
 }
