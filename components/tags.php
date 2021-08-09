@@ -5,7 +5,7 @@ $tags = new ToolsClass('tags', 'tag'); //false, filters
 
 $tags->getFilteredTags($filters);
 
-
+//deb(count($tags->tools));
 $tags = $tags->tools;
 
 

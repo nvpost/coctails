@@ -15,6 +15,7 @@ class ToolsClass
     public $tags; //array
     public $tools; //array
     public $filters;
+    public $unionIds;
 
     public function __construct($table, $fields, $coctail_id=false)
     {
@@ -32,30 +33,36 @@ class ToolsClass
 
     public function getFilteredTags($filters){
 
-        $tablesArr = [];
-        $valArr=[];
-        foreach ($filters as $table => $val){
-            $table = ($table == 'tag')?'tags.*':$table."*";
-            array_push($tablesArr, $table);
-            $val = explode(';', $val);
-            array_push($valArr, $val);
+        if(!$filters){
+            return false;
         }
-        $tables = implode(',', $tablesArr);
-        $vals = "'" .implode("', '", $valArr[0]) ."'";
-        deb($vals);
-        $sql = "SELECT DISTINCT coctails.coctail_id  FROM coctails, tags, ingredients 
-          WHERE 
-          tags.tag IN(".$vals.")
-          AND coctails.coctail_id = tags.coctail_id";
-        deb($sql);
-        $cictails_id_arr = pdSql($sql);
-        $coctail_id = array_column($cictails_id_arr, 'coctail_id');
-        $coctail_id = "'" .implode("', '", $coctail_id) ."'";
+        $this->unionIds = [];
 
-//        deb($coctail_id);
-//        $relativeTags = $this->getTags($coctail_id);
-//        deb($relativeTags)
-        $this->tools =  $this->getTags($coctail_id);
+        deb($filters);
+        $c_ids_arr = [];
+        foreach ($filters as $table => $val){
+
+            $val = explode(';', $val);
+            foreach ($val as $v){
+                $sql = "SELECT DISTINCT coctails.coctail_id  FROM coctails, tags, ingredients 
+                      WHERE tags.tag = '".$v."'
+                      AND coctails.coctail_id = tags.coctail_id";
+                $flat_c_ids = pdSql($sql);
+                $flat_c_ids = array_column($flat_c_ids, 'coctail_id');
+                $this->unionIds = (count($this->unionIds)==0) ? $flat_c_ids : array_intersect($this->unionIds, $flat_c_ids);
+//                deb(count($flat_c_ids));
+                $c_ids_arr[] = $flat_c_ids;
+            }
+
+
+        }
+
+//        deb(count($this->unionIds));
+        $coctail_id = "'" .implode("', '", $this->unionIds) ."'";
+
+        $relativeTags = $this->getTags($coctail_id);
+//        deb(count($relativeTags));
+        $this->tools = $relativeTags;
 
 
 
