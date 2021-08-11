@@ -110,4 +110,4 @@ $active_page = ($_GET['page'])?". Страница - ".$_GET['page']:false;
 $active_ingredient = $_GET['ingredient'];
 
 $filters = prepareUrl();
-deb($filters);
+

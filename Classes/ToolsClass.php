@@ -35,6 +35,7 @@ class ToolsClass
         if(!$filters){
             return false;
         }
+
         $this->unionIds = [];
 
         $c_ids_arr = [];
@@ -47,10 +48,11 @@ class ToolsClass
                 if($table == 'ingredient'){
                     $where = "ingredients.ingredient = '".$v."'";
                 }
-                $sql = "SELECT DISTINCT coctails.coctail_id  FROM coctails, tags, ingredients 
+
+                $sql = "SELECT DISTINCT coctails.coctail_id  FROM coctails, {$table}s
                       WHERE {$where}
                       AND coctails.coctail_id = tags.coctail_id";
-//                deb($sql);
+ //               deb($sql);
                 $flat_c_ids = pdSql($sql);
                 $flat_c_ids = array_column($flat_c_ids, 'coctail_id');
                 $this->unionIds = (count($this->unionIds)==0) ? $flat_c_ids : array_intersect($this->unionIds, $flat_c_ids);
@@ -59,6 +61,7 @@ class ToolsClass
         }
 
         $coctail_id = "'" .implode("', '", $this->unionIds) ."'";
+
 
         $relativeTags = $this->getTags($coctail_id);
         $this->tools = $relativeTags;

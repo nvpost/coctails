@@ -4,9 +4,7 @@
 $tags = new ToolsClass('tags', 'tag'); //false, filters
 
 $tags->getFilteredTags($filters);
-
 $tags = $tags->tools;
-
 
 
 
@@ -19,3 +17,4 @@ $arr = flatAndCount($tags, 'tag');
 dooToolsContent($arr, 'tag', $filters);
 
 echo "</div>";
+

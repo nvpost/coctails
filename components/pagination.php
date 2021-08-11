@@ -16,7 +16,6 @@ function drowPagination($c){
     $fin_point = ($page+$pagintation_step<$pages)?$page+$pagintation_step:$pages;
 
     $part_link=doRoute();
-    deb($part_link);
     if($page_tags){
         $tag = $page_tags[0];
         $part_link = "tag={$tag}";

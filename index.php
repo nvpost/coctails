@@ -5,6 +5,7 @@ spl_autoload_register(function ($class_name) {
     include 'Classes/'.$class_name . '.php';
 });
 
+$t = new TimeLogClass('app')
 ?>
 
 <link href="<?=$home_url?>assets/css.css" rel="stylesheet">
@@ -16,6 +17,10 @@ spl_autoload_register(function ($class_name) {
 
 require_once 'func.php';
 
+if($filters){
+    require_once 'components/activeTags.php';
+}
+
 
 //deb($_GET);
 
@@ -26,10 +31,6 @@ if(isset($_GET['page'])){
 }
 
 $page_tags = [];
-
-
-
-
 
 
 
@@ -56,7 +57,6 @@ else{
     require_once 'components/requireBlocks.php';
 }
 
-
-
+$t->timerStop();
 ?>
 

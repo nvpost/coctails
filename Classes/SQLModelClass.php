@@ -45,7 +45,6 @@ class SQLModelClass
     }
 
     public function count(){
-        //deb($qwe);
         $qwe = $this->prepareQwe();
         $res = pdSql($qwe);
         return count($res);
@@ -74,22 +73,17 @@ class SQLModelClass
         if(isset($this->sqlArray['offset'])){
             $qwe .= "OFFSET {$this->sqlArray['offset']} ";
         }
-//        deb($qwe);
         return $qwe;
     }
     public function all(){
         $qwe = $this->prepareQwe();
-//        deb($qwe);
         $res = pdSql($qwe);
-//        deb($res);
         return $res;
     }
 
     public function one(){
         $qwe = $this->prepareQwe();
-//        deb($qwe);
         $res = pdSql($qwe, 'one');
-//        deb($res);
         return $res;
     }
 }
