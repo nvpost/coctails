@@ -120,3 +120,31 @@ a.active_page{
 .more_from .catalog_item_label h3{
     font-size: 1.6em;
 }
+
+/*tag_line*/
+.active_tags_line{
+    display: flex;
+    align-items: center;
+}
+.active_tags_item{
+    padding: 2px 15px;
+    border: 1px solid;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    cursor: pointer;
+    margin: 2px;
+    opacity: 0.6;
+    transition: opacity 0.3s;
+}
+.active_tags_item:hover{
+    opacity: 1;
+}
+.active_tags_item i{
+    margin-left: 10px;
+    transition: transform 1s;
+}
+.active_tags_item i:hover{
+    transform: rotate(360grad);
+}
