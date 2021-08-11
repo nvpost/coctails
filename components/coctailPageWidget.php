@@ -80,4 +80,7 @@ function doLink($what, $l){
             </div>
         </div>
     </div>
+    <div class="coctail_copyright">
+        <a href="https://ru.inshaker.com/<?=$coctail['origin_url']?>" target="_blank">Источник ru.inshaker.com </a>
+    </div>
 </div>
