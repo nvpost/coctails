@@ -154,3 +154,8 @@ a.active_page{
     transform: rotate(360grad);
     color:red;
 }
+
+.tag_container{
+    height: 277px;
+    overflow: hidden;
+}

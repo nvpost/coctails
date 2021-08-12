@@ -51,14 +51,18 @@ class ToolsClass
 
                 $sql = "SELECT DISTINCT coctails.coctail_id  FROM coctails, {$table}s
                       WHERE {$where}
-                      AND coctails.coctail_id = tags.coctail_id";
- //               deb($sql);
+                      AND coctails.coctail_id = {$table}s.coctail_id";
+//                deb($sql);
                 $flat_c_ids = pdSql($sql);
+
                 $flat_c_ids = array_column($flat_c_ids, 'coctail_id');
                 $this->unionIds = (count($this->unionIds)==0) ? $flat_c_ids : array_intersect($this->unionIds, $flat_c_ids);
                 $c_ids_arr[] = $flat_c_ids;
+
             }
         }
+
+
 
         $coctail_id = "'" .implode("', '", $this->unionIds) ."'";
 

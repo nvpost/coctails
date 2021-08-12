@@ -16,4 +16,5 @@ RewriteRule (*UTF8)^tools=(.*+)/?$ index.php?tools=$1 [L]
 RewriteRule (*UTF8)^ingredient=(.*+)/?$ index.php?ingredient=$1 [L]
 
 
+
 </IfModule>
