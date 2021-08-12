@@ -143,8 +143,14 @@ a.active_page{
 }
 .active_tags_item i{
     margin-left: 10px;
-    transition: transform 1s;
+    transition: all 1s;
 }
 .active_tags_item i:hover{
     transform: rotate(360grad);
+    color:red;
+}
+
+.active_tags_item:hover .active_tags_item>i{
+    transform: rotate(360grad);
+    color:red;
 }

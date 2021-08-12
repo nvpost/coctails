@@ -21,11 +21,11 @@ $coctail = $sqlClass->table("coctails")
 $process = explode("; ", $coctail['process']);
 //deb($process);
 
-//$coctail_tags = $sqlClass->table("tags")
-//    ->select("*")
-//    ->where("tags.coctail_id='".$coctail['coctail_id']."'")
-//    ->all();
-////deb($coctail_tags);
+$coctail_tags = $sqlClass->table("tags")
+    ->select("*")
+    ->where("tags.coctail_id='".$coctail['coctail_id']."'")
+    ->all();
+//deb($coctail_tags);
 
 
 $coctail_tools = $sqlClass->table("tools")

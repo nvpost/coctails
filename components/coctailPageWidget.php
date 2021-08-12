@@ -7,6 +7,7 @@ function doLink($what, $l){
     return "<a href='$href'>".$l."</a>";
 }
 
+require 'components/more_block/moreCoctails.php';
 ?>
 
 <div class="coctail_page_container container">
@@ -61,22 +62,22 @@ function doLink($what, $l){
             <div class="more_from more_from_tag">
                 <h3>Похожие коктейли</h3>
                 <?php
-                    require_once 'more_block/moreForTags.php';
+                    moreCoctailsFoo($coctail_tags, 'tags', 'tag');
                 ?>
             </div>
 
             <div class="more_from more_from_ing">
                 <h3>Коктейли из тех же ингредиентов</h3>
                 <?php
-                    require_once 'more_block/moreForIng.php';
+                    moreCoctailsFoo($coctail_ingredients, 'ingredients', 'ingredient');
                 ?>
             </div>
 
             <div class="more_from more_from_ing">
                 <h3>Коктейли с такими же аксессуарами</h3>
-                    <?php
-                        require_once 'more_block/moreForTools.php';
-                    ?>
+                <?php
+                    moreCoctailsFoo($coctail_tools, 'tools', 'name');
+                ?>
             </div>
         </div>
     </div>
