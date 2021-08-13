@@ -10,17 +10,17 @@ $tags_block=array(
         'field'=>'ingredient',
         'label'=>'Ингредиенты'
     ],
-    [
-        'table'=>'tools',
-        'field'=>'name',
-        'label'=>'Штуки'
-    ]
+//    [
+//        'table'=>'tools',
+//        'field'=>'name',
+//        'label'=>'Штуки'
+//    ]
 );
 foreach ($tags_block as $block){
-    drowTags($block['table'], $block['field'], $block['label']);
+    drowTagsBlock($block['table'], $block['field'], $block['label']);
 }
 
-function drowTags($table, $field, $label){
+function drowTagsBlock($table, $field, $label){
     global $filters;
     $tags = new ToolsClass($table, $field); //false, filters
 

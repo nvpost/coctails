@@ -1,5 +1,5 @@
 <?php
-deb($filters);
+//deb($filters);
 echo "<div class='active_tags'>";
 foreach ($filters as $key => $f){
     $f = explode(';', $f);

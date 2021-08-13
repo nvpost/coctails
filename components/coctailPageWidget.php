@@ -7,6 +7,8 @@ function doLink($what, $l){
     return "<a href='$href'>".$l."</a>";
 }
 
+
+
 require 'components/more_block/moreCoctails.php';
 ?>
 
