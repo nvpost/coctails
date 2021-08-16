@@ -10,13 +10,15 @@ h4{
 
 .tags{
     padding: 5px;
+    transition: color 0.3s;
 }
-.tags_active{
+.tags_active,
+.tags:hover{
     color: gold;
 }
-.less_than_needed{
-    display: none;
-}
+/*.less_than_needed{*/
+    /*display: none;*/
+/*}*/
 .show_less{
     cursor: pointer;
 }
@@ -157,6 +159,32 @@ a.active_page{
 }
 
 .tag_container{
-    height: 277px;
+    max-height: 277px;
     overflow: hidden;
+    position: relative;
+    transition: max-height 0.3s;
+}
+.open_tools{
+    max-height: 120%;
+}
+
+.tag_button{
+    height:60px;
+    width: 99%;
+    background-color: white;
+    position: absolute;
+    bottom: 0px;
+    background: rgb(255,255,255);
+    background: linear-gradient(0deg, rgba(255,255,255,1) 0%, rgba(255,255,255,0.7819502801120448) 100%, rgba(255,255,255,0) 100%);
+    cursor:pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+.tag_button_open{
+    position: inherit;
+}
+.tag_button:hover{
+    text-shadow: 1px 1px 5px #00000073;
 }

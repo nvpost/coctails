@@ -48,6 +48,9 @@ class ToolsClass
                 if($table == 'ingredient'){
                     $where = "ingredients.ingredient = '".$v."'";
                 }
+                if($table == 'tool'){
+                    $where = "tools.name = '".$v."'";
+                }
 
                 $sql = "SELECT DISTINCT coctails.coctail_id  FROM coctails, {$table}s
                       WHERE {$where}

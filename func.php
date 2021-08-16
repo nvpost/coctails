@@ -90,7 +90,7 @@ function doRoute(){
 function dooToolsContent($arr, $key, $filter){
     global $home_url;
     $filterArr = explode(";",$filter[$key]);
-
+    $key = ($key=='name')?'tool':$key;
     foreach ($arr as $k =>$count){
         $label = trim($k);
 
@@ -100,7 +100,7 @@ function dooToolsContent($arr, $key, $filter){
         $class = ($count<5)?  $class.' less_than_needed' : $class;
         echo "<a class='{$class}' href='{$href}'>".str_replace(" ", "&nbsp;", $label)."&nbsp;(".$count.")</a> ";
     }
-    echo "<span class='show_less'>Показать все</span>";
+    //echo "<span class='show_less'>Показать все</span>";
 }
 
 

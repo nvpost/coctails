@@ -12,7 +12,7 @@ RewriteRule (*UTF8)^coctail/(.*+)/?$ index.php?coctail=$1 [L]
 
 RewriteRule (*UTF8)^page=(.*+)/?$ index.php?page=$1 [L]
 RewriteRule (*UTF8)^tag=(.*+)/?$ index.php?tag=$1 [L]
-RewriteRule (*UTF8)^tools=(.*+)/?$ index.php?tools=$1 [L]
+RewriteRule (*UTF8)^tool=(.*+)/?$ index.php?tool=$1 [L]
 RewriteRule (*UTF8)^ingredient=(.*+)/?$ index.php?ingredient=$1 [L]
 
 

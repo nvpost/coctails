@@ -25,6 +25,10 @@ function moreCoctailsFoo($arr, $table, $field){
 
     $catalogHtml = new CatalogWidgetClass($slicedMoreCoctails);
     $catalog = $catalogHtml->getCatalogItem();
-    require 'components/catalogWidget.php';
+//    require 'components/catalogWidget.php';
+    echo "<div class='catalog_container container'>";
+
+    echo $catalog;
+    echo "</div>";
 
 }

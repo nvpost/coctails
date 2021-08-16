@@ -43,7 +43,7 @@ require 'components/more_block/moreCoctails.php';
                 <?php
                     $table_name = "Посуда и приборы";
                     $label = "name";
-                    $what = "tools";
+                    $what = "tool";
                     $tools_arr = $coctail_tools;
                     require 'page_parts/tools_table.php'
                 ?>
@@ -54,9 +54,17 @@ require 'components/more_block/moreCoctails.php';
                 require_once 'page_parts/process.php';
             ?>
             <div class="coctail_tags">
+                <h4>Категории</h4>
                 <?php
                 $coctail_id = $coctail['coctail_id'];
-                require_once 'components/tags.php';
+                foreach ($coctail_tags as $k =>$tag){
+                    $href = $home_url.'tag='.$tag['tag'];
+                    $class ='tags';
+                    echo "<a class='{$class}' href='{$href}'>".str_replace(" ", "&nbsp;", $tag['tag'])."</a> ";
+                }
+
+
+                //require_once 'components/tags.php';
                 ?>
             </div>
         </div>
@@ -75,7 +83,7 @@ require 'components/more_block/moreCoctails.php';
                 ?>
             </div>
 
-            <div class="more_from more_from_ing">
+            <div class="more_from more_from_tool">
                 <h3>Коктейли с такими же аксессуарами</h3>
                 <?php
                     moreCoctailsFoo($coctail_tools, 'tools', 'name');
