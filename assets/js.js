@@ -22,12 +22,13 @@ function removeTag(key,val){
     }else{
         val = val.replaceAll('_', ' ')
         let url = decodeURI(document.location.href)
-        // console.log(key, val);
+        console.log(key, val);
         forDelete = "&"+key+"="+val
         if(url.indexOf(forDelete)==-1){
             forDelete = key+"="+val+"&"
         }
-
+        // console.log(url);
+        // console.log(forDelete);
         let newUrl = url.replace(forDelete, '')
         document.location.href = newUrl
     }

@@ -22,17 +22,15 @@ $t = new TimeLogClass('app')
 
 require_once 'func.php';
 
-if($filters&&!isset($filters['coctail'])){
-    require_once 'components/activeTags.php';
-}
-
-
-//deb($_GET);
-
 
 $page = 0;
 if(isset($_GET['page'])){
     $page = $_GET['page']-1;
+//    deb($page);
+}
+
+if($filters&&!isset($filters['coctail'])){
+    require_once 'components/activeTags.php';
 }
 
 $page_tags = [];

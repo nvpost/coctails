@@ -1,6 +1,7 @@
 <?php
 //deb($filters);
 echo "<div class='active_tags'>";
+
 foreach ($filters as $key => $f){
     $f = explode(';', $f);
     $ru_key="";
@@ -20,6 +21,12 @@ foreach ($filters as $key => $f){
     }
     echo "</div>";
 }
+if($page>1){
+    echo "<div class='active_tags_line'>";
+    echo "<div class='line_tag_header'>Страница: </div>";
+    echo drowTags('page', $page+1);
+}
+
 echo "</div>";
 
 function drowTags($key, $tag){

@@ -58,9 +58,17 @@ function prepareUrl(){
     if(!$s){
         return false;
     }
+
     $queDataArr = explode('&', $s);
+
     $filters = [];
+//    deb($queDataArr);
     foreach ($queDataArr as $que){
+//        deb($que);
+//        deb(strpos($que, 'age='));
+        if(strpos($que, 'age=')){
+            continue;
+        }
         $filtersData = explode("=", $que);
         if(isset($filters[$filtersData[0]])){
             $unitedValue = $filters[$filtersData[0]].';'.$filtersData[1];

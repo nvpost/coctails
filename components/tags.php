@@ -34,37 +34,12 @@ function drowTagsBlock($table, $field, $label){
 
         $arr = flatAndCount($tags, $field);
         dooToolsContent($arr, $field, $filters);
-    echo "<div class='tag_button' onclick=showTrigger('".$field."')>Показать еще {$label}</div>";
+        if(count($arr)>12){
+            echo "<div class='tag_button' onclick=showTrigger('".$field."')>Показать еще {$label}</div>";
+        }
+
     echo "</div>";
 }
 
 
-
-
-
-//$tags = new ToolsClass('ingredients', 'ingredient'); //false, filters
-//
-//$tags->getFilteredTags($filters);
-//$tags = $tags->tools;
-//
-//echo "<div class='tag_container index_ingredients>";
-//echo "<h4>Ингредиенты</h4>";
-//
-//    $arr = flatAndCount($tags, 'ingredient');
-//    dooToolsContent($arr, 'ingredient', $filters);
-//
-//echo "</div>";
-//
-//$tags = new ToolsClass('tools', 'name'); //false, filters
-//
-//$tags->getFilteredTags($filters);
-//$tags = $tags->tools;
-//
-//echo "<div class='tag_container index_tools'>";
-//echo "<h4>Штуки</h4>";
-//
-//    $arr = flatAndCount($tags, 'name');
-//    dooToolsContent($arr, 'name', $filters);
-//
-//echo "</div>";
 
