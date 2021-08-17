@@ -28,7 +28,6 @@ function drowTagsBlock($table, $field, $label){
     $tags->getFilteredTags($filters);
     $tags = $tags->tools;
 //    deb(count($tags));
-//    deb(count($tags));
 
     echo "<div class='tag_container index_tags block_".$field."'>";
     echo "<h4>{$label}</h4>";
