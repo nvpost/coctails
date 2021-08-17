@@ -16,6 +16,17 @@ $tags_block=array(
         'label'=>'Штуки'
     ]
 );
+
+function fixKeys($n){
+    $str = trim($n);
+    $str = str_replace("'", '', $str);
+    return $str;
+}
+echo "<script>
+let value_tag, value_name, value_ingredient=[]
+</script>";
+
+
 foreach ($tags_block as $block){
     drowTagsBlock($block['table'], $block['field'], $block['label']);
 }
@@ -33,6 +44,11 @@ function drowTagsBlock($table, $field, $label){
     echo "<h4>{$label}</h4>";
 
         $arr = flatAndCount($tags, $field);
+
+
+
+        require 'page_parts/multiselect.php';
+
         dooToolsContent($arr, $field, $filters);
         if(count($arr)>12){
             echo "<div class='tag_button' onclick=showTrigger('".$field."')>Показать еще {$label}</div>";
@@ -40,6 +56,11 @@ function drowTagsBlock($table, $field, $label){
 
     echo "</div>";
 }
+
+
+?>
+
+
 
 
 

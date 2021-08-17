@@ -24,12 +24,12 @@ foreach ($filters as $key => $f){
 if($page>1){
     echo "<div class='active_tags_line'>";
     echo "<div class='line_tag_header'>Страница: </div>";
-    echo drowTags('page', $page+1);
+    //echo drowTags('page', $page+1);
 }
 
 echo "</div>";
 
 function drowTags($key, $tag){
     $val = str_replace(' ', '_', $tag);
-    return "<div class='active_tags_item' data-key='{$key}', data-val='{$tag}' onclick=removeTag('{$key}','{$val}')><span>$tag</span><i class='fa fa-times' aria-hidden='true'></i></div>";
+    return "<div class='active_tags_item' data-key='{$key}' data-val='{$tag}' onclick=removeTag('{$key}','{$val}')><span>$tag</span><i class='fa fa-times' aria-hidden='true'></i></div>";
 }

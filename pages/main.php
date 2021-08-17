@@ -4,10 +4,14 @@
 $sqlClass = new SQLModelClass();
 $countCoctailsClass = new SQLModelClass();
 
+deb($fiters);
+//Забрать sql из ToolsClass
+
 if($_GET['tag']){
     $active_tag = $_GET['tag'];
     $table = 'coctails, tags';
     $select = 'coctails.*, tags.*';
+    deb($active_tag);
     $where = "tags.tag='".$active_tag."' AND tags.coctail_id = coctails.coctail_id";
 }
 
