@@ -1,6 +1,6 @@
 <?php
 
-$home_url = "http://localhost/coctails/";
+require_once 'config.php';
 echo "<script>
 let home_url = '{$home_url}'
 </script>";
