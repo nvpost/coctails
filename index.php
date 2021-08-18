@@ -25,6 +25,11 @@ $t = new TimeLogClass('app')
 </head>
 
 <body>
+<script>
+    let value_tag, value_name, value_ingredient=[]
+    // let arr_tag, arr_name, arr_ingredient=[]
+</script>
+
 <div class="app_container" id="coctail_app">
 
 

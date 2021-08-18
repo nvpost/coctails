@@ -72,7 +72,6 @@ function prepareUrl(){
             $filters[$filtersData[0]] = $filtersData[1];
         }
     }
-
     return $filters;
 }
 
@@ -116,7 +115,6 @@ function dooToolsContent($arr, $key, $filter){
         echo "<a class='{$class}' href='{$href}'>".str_replace(" ", "&nbsp;", $label)."&nbsp;(".$count.")</a> ";
     }
 }
-
 
 $active_page = ($_GET['page'])?". Страница - ".$_GET['page']:false;
 

@@ -48,3 +48,26 @@ function removeTag(key,val){
     }
 
 }
+
+tag_search_triggers = document.querySelectorAll('.tag_search_trigger')
+tag_search_triggers.forEach(i=>{
+    i.addEventListener('click', openSelect.bind())
+})
+
+function openSelect(e){
+    el = e.target
+    field = el.getAttribute('data-field')
+    let ms = document.querySelector(".multiselect[data-id='"+field+"']")
+    if(el.getAttribute('data-active')=='true'){
+        el.removeAttribute('data-active')
+        el.classList.remove('fa-times')
+        el.classList.add('fa-search')
+        ms.style.opacity='0';
+    }else{
+        el.setAttribute('data-active', 'true')
+        el.classList.remove('fa-search')
+        el.classList.add('fa-times')
+        ms.style.opacity='1';
+    }
+
+}

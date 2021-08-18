@@ -6,6 +6,7 @@ a{
 }
 h4{
     font-size: 1.6em;
+    margin: 20px 0em;
 }
 
 .tags{
@@ -187,4 +188,31 @@ a.active_page{
 }
 .tag_button:hover{
     text-shadow: 1px 1px 5px #00000073;
+}
+
+.tag_header {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+}
+.tag_header_label{
+    width: 200px;
+}
+.muliselect_fueld .multiselect{
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+.muliselect_fueld{
+    width:600px;
+    text-align: right;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+.muliselect_fueld i.fas{
+    font-size: 1.4em;
+    margin-left: 10px;
+}
+.tag_search_trigger{
+    cursor:pointer;
 }

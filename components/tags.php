@@ -22,9 +22,6 @@ function fixKeys($n){
     $str = str_replace("'", '', $str);
     return $str;
 }
-echo "<script>
-let value_tag, value_name, value_ingredient=[]
-</script>";
 
 
 foreach ($tags_block as $block){
@@ -41,14 +38,16 @@ function drowTagsBlock($table, $field, $label){
 //    deb(count($tags));
 
     echo "<div class='tag_container index_tags block_".$field."'>";
+    echo "<div class='tag_header'>";
+    echo "<div class='tag_header_label'>";
     echo "<h4>{$label}</h4>";
+    echo "</div>";
 
         $arr = flatAndCount($tags, $field);
 
 
-
         require 'page_parts/multiselect.php';
-
+    echo "</div>";
         dooToolsContent($arr, $field, $filters);
         if(count($arr)>12){
             echo "<div class='tag_button' onclick=showTrigger('".$field."')>Показать еще {$label}</div>";
