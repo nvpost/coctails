@@ -65,11 +65,8 @@ if($filters){
                           WHERE {$where}
                           AND coctails.coctail_id = {$table}s.coctail_id";
 
-//            deb($sql);
             $flat_c_ids = pdSql($sql);
-
             $flat_c_ids = array_column($flat_c_ids, 'coctail_id');
-
             $unionIds = (count($unionIds)==0) ? $flat_c_ids : array_intersect($unionIds, $flat_c_ids);
         }
     }
@@ -77,7 +74,7 @@ if($filters){
 
 
     $coctail_id = "'" .implode("', '", $unionIds) ."'";
-//    deb($coctail_id);
+    deb(count($unionIds));
 
 
 }

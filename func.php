@@ -57,15 +57,11 @@ function prepareUrl(){
     if(!$s){
         return false;
     }
-
     $queDataArr = explode('&', $s);
 
     $filters = [];
-//    deb($queDataArr);
     foreach ($queDataArr as $que){
-//        deb($que);
-//        deb(strpos($que, 'age='));
-        if(strpos($que, 'age=')){
+        if(strpos($que, 'age=')){ //Проверка на страницу
             continue;
         }
         $filtersData = explode("=", $que);
@@ -80,41 +76,50 @@ function prepareUrl(){
     return $filters;
 }
 
+$filters = prepareUrl();
+
 function doRoute(){
-    $routeUrl="";
+    global $filters;
     $routeArr = [];
-    $getUrl = prepareUrl();
+    $getUrl = $filters; //filters
     if($getUrl){
         foreach ($getUrl as $key => $val){
-            array_push($routeArr, "{$key}=$val");
+            $routeArr[$key]=$val;
         }
     }
-    $routeUrl = implode("&",$routeArr);
-
-    return $routeUrl;
+    return $routeArr;
 }
 
 function dooToolsContent($arr, $key, $filter){
     global $home_url;
     $filterArr = explode(";",$filter[$key]);
     $key = ($key=='name')?'tool':$key;
+
     foreach ($arr as $k =>$count){
         $label = trim($k);
 
-        $partfOfUrl = doRoute($key);
-        $href=($partfOfUrl) ? $home_url.$partfOfUrl.'&'.$key.'='.$label:$home_url.$key.'='.$label;
+        $partsfOfUrl = doRoute();
+        if(isset($partsfOfUrl[$key])&&(strpos($partsfOfUrl[$key], $label)===False)){
+            $partsfOfUrl[$key] = $partsfOfUrl[$key].";{$label}";
+        }else{
+            $partsfOfUrl[$key] = $label;
+        }
+
+        $rows = [];
+        foreach ($partsfOfUrl as $cat => $value){
+            $rows[] = "{$cat}={$value}";
+        }
+        $href = $home_url.implode("&",$rows);
+
         $class = (in_array($label, $filterArr)) ? 'tags tags_active' : 'tags';
         $class = ($count<5)?  $class.' less_than_needed' : $class;
         echo "<a class='{$class}' href='{$href}'>".str_replace(" ", "&nbsp;", $label)."&nbsp;(".$count.")</a> ";
     }
-    //echo "<span class='show_less'>Показать все</span>";
 }
 
 
-$active_tag = $_GET['tag'];
 $active_page = ($_GET['page'])?". Страница - ".$_GET['page']:false;
 
-$active_ingredient = $_GET['ingredient'];
 
-$filters = prepareUrl();
+
 
