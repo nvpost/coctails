@@ -1,6 +1,6 @@
 <?php
 //deb($filters);
-echo "<div class='active_tags'>";
+echo "<div class='active_tags container'>";
 
 foreach ($filters as $key => $f){
     $f = explode(';', $f);

@@ -23,22 +23,26 @@ function drowPagination($c){
 
     if($page>$pagintation_step){
         $prev_page = $start_point;
-        $href = $part_link . $prev_page;
-        echo "<a class='page' href={$href}>&lsaquo;</a>";
+//        $href = $part_link . $prev_page;
+        $href=doHref('page', $prev_page);
+        echo "<a class='page' href='{$href}'>&lsaquo;</a>";
     }
 
 
 
     for ($i=$start_point; $i<$fin_point; $i++){
         $p = $i+1;
-        $href = ($part_link)?"'".$part_link . "&page={$p}'":"page={$p}";
-        $active = ($page==$i)?'active_page':'';
-        echo "<a class='page {$active}' href={$href}>{$p}</a>";
+//        deb($part_link);
+
+        $href=doHref('page', $p);
+
+        $active = ($page==$i)?' active_page':'';
+        echo "<a class='page{$active}' href='{$href}'>{$p}</a>";
     }
     if($fin_point<$pages){
         $next_page = $fin_point+1;
-        $href = $part_link . $next_page;
-        echo "<a class='page' href={$href}>&rsaquo;</a>";
+        $href=doHref('page', $next_page);
+        echo "<a class='page' href='{$href}'>&rsaquo;</a>";
     }
 
     echo " <span class='count_pages_and_items'>(".$c." / ".$pages.")</span>";

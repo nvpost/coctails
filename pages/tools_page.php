@@ -5,7 +5,7 @@ $countCoctailsClass = new SQLModelClass();
 
 $tool_name = $_GET["tools"];
 
-echo "<h1>Коктейли с применением '{$tool_name}'</h1>";
+//echo "<h1>Коктейли с применением '{$tool_name}'</h1>";
 
 $coctail_ids = $sqlClass->table("tools")
     ->select("coctail_id")

@@ -2,7 +2,9 @@
 
 require_once 'config.php';
 session_start();
-$_SESSION["new"]='Есть такая сессия';
+
+//print_r($_SESSION);
+//session_destroy();
 
 
 spl_autoload_register(function ($class_name) {
@@ -35,7 +37,6 @@ $t = new TimeLogClass('app')
 
 
 <?php
-
 require_once 'func.php';
 
 
@@ -45,16 +46,17 @@ if(isset($_GET['page'])){
 //    deb($page);
 }
 
+
+
+
+
+require_once 'components/nav_header.php';
+
 if($filters&&!isset($filters['coctail'])){
     require_once 'components/activeTags.php';
 }
 
-$page_tags = [];
-
-
-
 require_once 'components/pagination.php';
-
 
 
 if(isset($_GET['coctail'])){

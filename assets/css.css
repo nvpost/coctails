@@ -22,14 +22,12 @@ h4{
 .tags:hover{
     color: var(--active-color);
 }
-/*.less_than_needed{*/
-    /*display: none;*/
-/*}*/
+
 .show_less{
     cursor: pointer;
 }
 
-.app_container{
+.container{
     width: 80%;
     max-width: 1200px;
     margin: auto;
@@ -99,7 +97,7 @@ a.active_page{
 
 
 /*coctail_page*/
-.coctail_page_container{
+.coctail_item{
     width: 800px;
     margin: auto;
 }
@@ -176,7 +174,7 @@ a.active_page{
 
 .tag_button{
     height:60px;
-    width: 99%;
+    width: 100%;
     background-color: white;
     position: absolute;
     bottom: 0px;

@@ -93,27 +93,33 @@ function dooToolsContent($arr, $key, $filter){
     global $home_url;
     $filterArr = explode(";",$filter[$key]);
     $key = ($key=='name')?'tool':$key;
-
+//    deb();
     foreach ($arr as $k =>$count){
         $label = trim($k);
 
-        $partsfOfUrl = doRoute();
-        if(isset($partsfOfUrl[$key])&&(strpos($partsfOfUrl[$key], $label)===False)){
-            $partsfOfUrl[$key] = $partsfOfUrl[$key].";{$label}";
-        }else{
-            $partsfOfUrl[$key] = $label;
-        }
-
-        $rows = [];
-        foreach ($partsfOfUrl as $cat => $value){
-            $rows[] = "{$cat}={$value}";
-        }
-        $href = $home_url.implode("&",$rows);
+        $href=doHref($key, $label);
 
         $class = (in_array($label, $filterArr)) ? 'tags tags_active' : 'tags';
         $class = ($count<5)?  $class.' less_than_needed' : $class;
         echo "<a class='{$class}' href='{$href}'>".str_replace(" ", "&nbsp;", $label)."&nbsp;(".$count.")</a> ";
     }
+}
+
+function doHref($key, $label){
+    global $home_url;
+    $partsfOfUrl = doRoute();
+    if(isset($partsfOfUrl[$key])&&(strpos($partsfOfUrl[$key], $label)===False)){
+        $partsfOfUrl[$key] = $partsfOfUrl[$key].";{$label}";
+    }else{
+        $partsfOfUrl[$key] = $label;
+    }
+
+    $rows = [];
+    foreach ($partsfOfUrl as $cat => $value){
+        $rows[] = "{$cat}={$value}";
+    }
+    $href = $home_url.implode("&",$rows);
+    return $href;
 }
 
 $active_page = ($_GET['page'])?". Страница - ".$_GET['page']:false;
