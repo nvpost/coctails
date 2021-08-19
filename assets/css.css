@@ -1,3 +1,8 @@
+:root{
+    --active-color: gold;
+}
+
+
 body{
     font-family: 'Lobster', cursive;
 }
@@ -15,7 +20,7 @@ h4{
 }
 .tags_active,
 .tags:hover{
-    color: gold;
+    color: var(--active-color);
 }
 /*.less_than_needed{*/
     /*display: none;*/
@@ -87,9 +92,9 @@ a.page{
     text-decoration: none;
 }
 a.active_page{
-    background-color: gold;
+    background-color: var(--active-color);
     color: #fff;
-    border: 1px solid gold;
+    border: 1px solid var(--active-color);
 }
 
 
@@ -215,4 +220,30 @@ a.active_page{
 }
 .tag_search_trigger{
     cursor:pointer;
+}
+
+
+.rating_star{
+    font-size: 1.6em;
+    cursor: pointer;
+}
+
+.fas.fa-star.rating_star{
+    opacity: 0.2;
+    transition: opacity 0.3s;
+}
+
+
+.fas.fa-star.rating_star.hovered{
+    opacity: 0.5;
+    color: var(--active-color);
+}
+
+.fas.fa-star.rating_star.active_star{
+    opacity: 1;
+    color: var(--active-color);
+}
+
+.rating_field{
+    display: none;
 }

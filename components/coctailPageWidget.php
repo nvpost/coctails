@@ -17,6 +17,10 @@ require 'components/more_block/moreCoctails.php';
         <h1>
             <?=$coctail['name']?>
         </h1>
+        <?php
+            require_once "page_parts/raing_view.php";
+        ?>
+
         <p>
             <?=$coctail['en_name']?>
         </p>

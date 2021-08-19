@@ -11,7 +11,7 @@ $inline_keys = "'" . implode("', '", $fixed_keys) . "'";
 
 
 echo "<script>
-        let arr_".$field."=[$inline_keys]
+        var arr_".$field."=[$inline_keys]
         </script>";
 
 

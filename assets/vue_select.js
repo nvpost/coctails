@@ -1,5 +1,6 @@
 
 
+
 let app = new Vue({
 
     el: '#coctail_app',
