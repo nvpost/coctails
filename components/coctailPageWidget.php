@@ -99,3 +99,6 @@ require 'components/more_block/moreCoctails.php';
         <a href="https://ru.inshaker.com/<?=$coctail['origin_url']?>" target="_blank">Источник ru.inshaker.com </a>
     </div>
 </div>
+
+
+<script src="<?=$home_url?>/assets/cart_item_scripts.js"></script>

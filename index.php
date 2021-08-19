@@ -1,7 +1,8 @@
 <?php
 
 require_once 'config.php';
-
+session_start();
+$_SESSION["new"]='Есть такая сессия';
 
 
 spl_autoload_register(function ($class_name) {
