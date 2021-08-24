@@ -10,10 +10,7 @@ let home_url = '{$home_url}'
 </script>";
 
 
-$client_id = '7931364'; // ID приложения
-$client_secret = 'E8dnvUiPCJ0iGruyj2vl'; // Защищённый ключ
-$service_key = '666cf5ec666cf5ec666cf5ec656615f0086666c666cf5ec07735011b7149749b0dcfce1';
-$redirect_uri = 'http://localhost/coctails/auth/vk.php'; // Адрес сайта
+
 
 $vk_auth_url = 'http://oauth.vk.com/authorize';
 
