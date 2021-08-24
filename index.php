@@ -1,9 +1,7 @@
 <?php
 
 require_once 'config.php';
-session_start();
 
-//print_r($_SESSION);
 //session_destroy();
 
 
@@ -40,6 +38,8 @@ $t = new TimeLogClass('app')
 require_once 'func.php';
 
 
+
+
 $page = 0;
 if(isset($_GET['page'])){
     $page = $_GET['page']-1;
@@ -50,7 +50,7 @@ if(isset($_GET['page'])){
 
 
 
-require_once 'components/nav_header.php';
+require_once 'components/page_parts/nav_header.php';
 
 if($filters&&!isset($filters['coctail'])){
     require_once 'components/activeTags.php';

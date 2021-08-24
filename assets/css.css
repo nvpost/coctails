@@ -32,6 +32,34 @@ h4{
     max-width: 1200px;
     margin: auto;
 }
+
+
+/*header*/
+
+.header_container{
+    display: flex;
+    justify-content: space-between;
+}
+.user_bar{
+    display: flex;
+    align-items: center;
+}
+.user_bar_img{
+    height: 50px;
+    padding: 3px
+}
+
+.user_bar_img img{
+    height: 100%;
+    border-radius: 50px;
+}
+.user_bar_name{
+    margin-left: 10px;
+}
+.user_bar_name p{
+    margin: 0px;
+}
+
 .catalog_container{
     border: 1px solid;
     display: flex;

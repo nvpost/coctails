@@ -27,8 +27,8 @@ function pdSql($sql, $one=false){
     $sql_count++;
 
     return($data);
-
 }
+
 
 require_once 'config.php';
 
