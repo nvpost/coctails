@@ -1,35 +1,51 @@
 <?php
 session_start();
 $user=false;
-//drowLoginlineHtml =
+require_once '/auth/auth_data.php';
 if(isset($_SESSION['uid'])){
+//    deb($_SESSION);
     $uid = $_SESSION['uid'];
-    $log_method = $_SESSION['log_method'];
-    require_once 'auth/get_user.php';
+
+    $sql = "select * from users where uid='{$uid}'";
+    $user = pdSql($sql)[0];
+//    deb($sql);
+//    deb($user);
 }
 
 function drowLoginline(){
     global $user;
     global $vk_auth_url;
     global $vk_auth_params;
+    global $ya_url;
+    global $ya_params;
     if($user){
         $user_bar_html = "<div class='user_bar'>";
         $user_bar_html .= "<div class='user_bar_img'>";
-        $user_bar_html .= "<img src ='".$user['img']."'>";
+        $user_bar_html .= "<img src ='".userPicSrc($user)."'>";
         $user_bar_html .="</div>";
         $user_bar_html .= "<div class='user_bar_name'>";
-        $user_bar_html .= "<p>".$user['login']."</p>";
+        $user_bar_html .= "<p>".$user['user_name']."</p>";
         $user_bar_html .= "<p><a href='{$home_url}auth/exit.php'>Выход</a></p>";
         $user_bar_html .="</div>";
         $user_bar_html .="</div>";
 
         return $user_bar_html;
     }else{
-        return "<p><a href='{$vk_auth_url}?". urldecode(http_build_query($vk_auth_params))."'>Войти vk</a> ";
+        $login_bar = "<div class='login_bar'>";
+        $login_bar .= "<p><a href='{$vk_auth_url}?". urldecode(http_build_query($vk_auth_params))."'>Войти vk</a></p>";
+        $login_bar .= "<p><a href='{$ya_url}?" . urldecode(http_build_query($ya_params)) . "'>Войти через Yandex</a></p>";
+        $login_bar .= "</div>";
+        return $login_bar;
     }
 }
 
-
+function userPicSrc($user){
+    if($user['method']=='ya'){
+        return "https://avatars.yandex.net/get-yapic/".$user['img']."/islands-retina-small ";
+    }else{
+        return $user['img'];
+    }
+}
 ?>
 
 

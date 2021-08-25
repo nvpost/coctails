@@ -3,8 +3,9 @@
 
 session_start();
 require_once '../func.php';
-require_once '../config.php';
-if($_SESSION['uid']) {
+//require_once '../config.php';
+require_once 'auth_data.php';
+if($_SESSION['uid11']) {
     if(isset($_GET['exit'])){
         session_destroy();
         header("Location:http://localhost/coctails/auth/vk.php");
@@ -24,7 +25,6 @@ if($_SESSION['uid']) {
             'code' => $_GET['code'],
             'redirect_uri' => $redirect_uri
         );
-
         $token = json_decode(file_get_contents('https://oauth.vk.com/access_token' . '?' . urldecode(http_build_query($params))), true);
         if (isset($token['access_token'])) {
             $params = array(
@@ -53,14 +53,26 @@ if($_SESSION['uid']) {
             echo '<img src="' . $userInfo['photo_big'] . '" />';
             echo "<br />";
             require_once 'check_add_user.php';
-            deb($result);
 
-            $userInfo['method'] = 'vk';
+            $method = 'vk';
+            $prepared_data=[
+                "login" => $userInfo['screen_name'],
+                "pass_hash" => '',
+                "user_name" => $userInfo['first_name'],
+                "method" => $method,
+                "img" => $userInfo['photo_big'],
+                "email" => "",
+                "uid" => $userInfo['id'].'_'.$method,
+                "status" =>'user'
+            ];
 
-            $set_user = checkUser($userInfo);
-            if($set_user){
-                header("Location: {$home_url}");
-            }
+            deb($prepared_data);
+            $set_user = checkUser($prepared_data);
+//            if($set_user){
+//                $_SESSION['uid'] = $userInfo['id'];
+//                $_SESSION['log_method'] = $userInfo['method'];
+//                header("Location: {$home_url}");
+//            }
 
 
         } else {
