@@ -18,6 +18,9 @@ function drowLoginline(){
     global $vk_auth_params;
     global $ya_url;
     global $ya_params;
+    global $google_url;
+    global $google_params;
+
     if($user){
         $user_bar_html = "<div class='user_bar'>";
         $user_bar_html .= "<div class='user_bar_img'>";
@@ -34,6 +37,9 @@ function drowLoginline(){
         $login_bar = "<div class='login_bar'>";
         $login_bar .= "<p><a href='{$vk_auth_url}?". urldecode(http_build_query($vk_auth_params))."'>Войти vk</a></p>";
         $login_bar .= "<p><a href='{$ya_url}?" . urldecode(http_build_query($ya_params)) . "'>Войти через Yandex</a></p>";
+        $login_bar .= "<p><a href='{$google_url}?" . urldecode(http_build_query($google_params)) . "'>Войти через Google</a></p>";
+
+
         $login_bar .= "</div>";
         return $login_bar;
     }
