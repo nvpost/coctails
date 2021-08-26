@@ -10,7 +10,8 @@ function checkUser($userInfo){
     $user = pdSql($sql);
     if($user){
         echo "Пользователь есть";
-        loginUser($userInfo);
+        //deb($user[0]);
+        loginUser($user[0]);
     }else{
         echo "Пользователя нет, добавляем в базу";
         addUserToBase($userInfo);
@@ -29,6 +30,7 @@ function addUserToBase($userInfo){
     try{
         $statement = $db->prepare($sql);
         $statement->execute($userInfo);
+        $userInfo['id'] = $db->lastInsertId();
 //        deb($userInfo);
 //        deb('Запись прошла');
         loginUser($userInfo);
@@ -49,7 +51,8 @@ function loginUser($userInfo){
     $user = [
         'uid'=>$userInfo['uid'],
         'user_name'=>$userInfo['user_name'],
-        'img'=>$img_src
+        'img'=>$img_src,
+        'id'=>$userInfo['id']
     ];
     $_SESSION['user'] = $user;
 

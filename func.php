@@ -1,4 +1,7 @@
 <?php
+// ini_set('display_errors', 1);
+// ini_set('display_startup_errors', 1);
+// error_reporting(E_ALL);
 
 function deb($v, $h=0){
     if($h) echo "<hr>";
@@ -121,8 +124,11 @@ function doHref($key, $label){
     $href = $home_url.implode("&",$rows);
     return $href;
 }
+if(isset($_GET['page'])){
+    $active_page = ($_GET['page'])?". Страница - ".$_GET['page']:false;
+}
 
-$active_page = ($_GET['page'])?". Страница - ".$_GET['page']:false;
+
 
 
 

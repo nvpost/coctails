@@ -44,6 +44,7 @@ function loginBar(){
 
 function userBar(){
     global $user;
+    global $home_url;
     $user_bar_html = "<div class='user_bar'>";
     $user_bar_html .= "<div class='user_bar_img'>";
     $user_bar_html .= "<img src ='".$user['img']."'>";

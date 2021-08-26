@@ -99,9 +99,8 @@ require 'components/more_block/moreCoctails.php';
             </div>
         </div>
     <div class="coctail_copyright">
-        <a href="https://ru.inshaker.com/<?=$coctail['origin_url']?>" target="_blank">Источник ru.inshaker.com </a>
+        <a href="https://ru.inshaker.com<?=$coctail['origin_url']?>" target="_blank">Источник ru.inshaker.com </a>
     </div>
 </div>
 
-
-<script src="<?=$home_url?>/assets/cart_item_scripts.js"></script>
+<script src="<?=$home_url?>assets/cart_item_scripts.js"></script>

@@ -1,10 +1,11 @@
 <?php
 session_start();
 $user=false;
-require_once '/auth/auth_data.php';
+require_once 'auth/auth_data.php';
 
 if(isset($_SESSION['user'])){
     $user = $_SESSION['user'];
+    // deb($user);
 }
 
 require_once "header_parts/login_bar.php";
