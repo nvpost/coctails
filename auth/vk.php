@@ -3,18 +3,7 @@
 
 session_start();
 require_once '../func.php';
-//require_once '../config.php';
 require_once 'auth_data.php';
-if($_SESSION['uid11']) {
-    if(isset($_GET['exit'])){
-        session_destroy();
-        header("Location:http://localhost/coctails/auth/vk.php");
-    }
-      print_r($_SESSION['uid']);
-
-      echo "<br><a href='?exit=exit'>Выход</a>";
-}else {
-
 
 
     if (isset($_GET['code'])) {
@@ -35,9 +24,7 @@ if($_SESSION['uid11']) {
             );
 
             $userInfo = json_decode(file_get_contents('https://api.vk.com/method/users.get' . '?' . urldecode(http_build_query($params))), true);
-            echo "<pre>";
-            print_r($userInfo);
-            echo "</pre>";
+
             if (isset($userInfo['response'][0]['id'])) {
                 $userInfo = $userInfo['response'][0];
                 $result = true;
@@ -45,13 +32,7 @@ if($_SESSION['uid11']) {
         }
 
         if ($result) {
-            echo "Социальный ID пользователя: " . $userInfo['id'] . '<br />';
-            echo "Имя пользователя: " . $userInfo['first_name'] . '<br />';
-            echo "Ссылка на профиль пользователя: " . $userInfo['screen_name'] . '<br />';
-            echo "Пол пользователя: " . $userInfo['sex'] . '<br />';
-            echo "День Рождения: " . $userInfo['bdate'] . '<br />';
-            echo '<img src="' . $userInfo['photo_big'] . '" />';
-            echo "<br />";
+
             require_once 'check_add_user.php';
 
             $method = 'vk';
@@ -66,19 +47,9 @@ if($_SESSION['uid11']) {
                 "status" =>'user'
             ];
 
-            deb($prepared_data);
             $set_user = checkUser($prepared_data);
-//            if($set_user){
-//                $_SESSION['uid'] = $userInfo['id'];
-//                $_SESSION['log_method'] = $userInfo['method'];
-//                header("Location: {$home_url}");
-//            }
-
-
-        } else {
-            echo "Нет авторизации";
         }
-    }
+
 }
 
 ?>

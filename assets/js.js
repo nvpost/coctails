@@ -68,4 +68,39 @@ function openSelect(e){
     }
 }
 
+function auth_modal(){
+    let modalWrapper = document.createElement('div')
+    modalWrapper.classList.add('auth_modal')
 
+    auth_urls.forEach(i=>{
+        let authModalLink = document.createElement('div')
+        authModalLink.classList.add('auth_modal_link')
+        authModalLinkHtml = "<a href='"+i.link+"'>"
+        authModalLinkHtml += "<i class='"+i.fa+"'></i>"
+        authModalLinkHtml += "<span>"+i.label+"</span>"
+        authModalLinkHtml += "</a>"
+
+        authModalLink.innerHTML = authModalLinkHtml;
+        modalWrapper.appendChild(authModalLink)
+    })
+
+    openModal(modalWrapper)
+
+}
+
+function openModal(mc){
+    let hover = document.querySelector('.hover')
+    hover.style.zIndex=1000
+    hover.style.opacity=1
+    hover.style.display="flex"
+    let app = document.querySelector('#coctail_app')
+    hover.appendChild(mc)
+}
+
+function closeModal(){
+    document.querySelector('.auth_modal').remove();
+
+    let hover = document.querySelector('.hover')
+    hover.style.display="none"
+
+}

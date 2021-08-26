@@ -1,8 +1,6 @@
 <?php
 
-$client_id = ''; // Client ID
-$client_secret = ''; // Client secret
-$redirect_uri = 'http://localhost/coctails/auth/fb.php'; // Redirect URIs
+
 
 $url = 'https://www.facebook.com/dialog/oauth';
 

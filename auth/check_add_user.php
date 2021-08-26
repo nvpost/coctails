@@ -43,6 +43,15 @@ function addUserToBase($userInfo){
 function loginUser($userInfo){
     global $home_url;
     deb($userInfo);
-    $_SESSION['uid'] = $userInfo['uid'];
+    $img_src = ($userInfo['method']=='ya')?
+        "https://avatars.yandex.net/get-yapic/".$userInfo['img']."/islands-retina-small":
+        $userInfo['img'];
+    $user = [
+        'uid'=>$userInfo['uid'],
+        'user_name'=>$userInfo['user_name'],
+        'img'=>$img_src
+    ];
+    $_SESSION['user'] = $user;
+
     header("Location: {$home_url}");
 }

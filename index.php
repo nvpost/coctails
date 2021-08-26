@@ -32,6 +32,7 @@ $t = new TimeLogClass('app')
 </script>
 
 <div class="app_container" id="coctail_app">
+    <div class="hover" onclick="closeModal()"></div>
 
 
 <?php
@@ -43,14 +44,11 @@ require_once 'func.php';
 $page = 0;
 if(isset($_GET['page'])){
     $page = $_GET['page']-1;
-//    deb($page);
 }
 
-
-
-
-
 require_once 'components/page_parts/nav_header.php';
+
+echo "<div class='page_container'>";
 
 if($filters&&!isset($filters['coctail'])){
     require_once 'components/activeTags.php';
@@ -80,6 +78,7 @@ else{
 
 
 ?>
+</div>
 </div>
 
 

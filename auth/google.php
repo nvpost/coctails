@@ -38,15 +38,6 @@ if (isset($_GET['code'])) {
     }
 
     if ($result) {
-        echo "<pre>";
-        print_r($userInfo);
-        echo "</pre>";
-        echo "Социальный ID пользователя: " . $userInfo['id'] . '<br />';
-        echo "Имя пользователя: " . $userInfo['name'] . '<br />';
-        echo "Email: " . $userInfo['email'] . '<br />';
-        echo "Ссылка на профиль пользователя: " . $userInfo['link'] . '<br />';
-        echo "Пол пользователя: " . $userInfo['gender'] . '<br />';
-        echo '<img src="' . $userInfo['picture'] . '" />'; echo "<br />";
 
         require_once 'check_add_user.php';
 
