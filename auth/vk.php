@@ -47,7 +47,9 @@ require_once 'auth_data.php';
                 "status" =>'user'
             ];
 
-            $set_user = checkUser($prepared_data);
+            deb($curren_page);
+
+            // $set_user = checkUser($prepared_data);
         }
 
 }

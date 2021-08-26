@@ -73,6 +73,8 @@ function auth_modal(){
     modalWrapper.classList.add('auth_modal')
 
     auth_urls.forEach(i=>{
+        console.log(i.link, current_page_tags)
+        let link = i.link+"&page"+current_page_tags
         let authModalLink = document.createElement('div')
         authModalLink.classList.add('auth_modal_link')
         authModalLinkHtml = "<a href='"+i.link+"'>"

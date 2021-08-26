@@ -19,7 +19,10 @@ function loginBar(){
     $js_ya_auth_url = $ya_url."?" . urldecode(http_build_query($ya_params));
     $js_ga_auth_url = $google_url."?" . urldecode(http_build_query($google_params));
 
+    $current_page_tags = str_replace('&', '_1_', $_SERVER['QUERY_STRING']);
+
     echo "<script>
+    let current_page_tags = '{$current_page_tags}';
     let auth_urls = [
         {'label': 'Войти через VK', 'fa':'fab fa-vk', 'link':'{$js_vk_auth_url}'},
         {'label': 'Войти через Яндекс', 'fa':'fab fa-yandex', 'link':'{$js_ya_auth_url}'},
@@ -28,6 +31,7 @@ function loginBar(){
 
 
     </script>";
+
 
 //    $login_bar .= "<div class='login_bar_dropdown'>";
 //        $login_bar .= "<p><a href='{$vk_auth_url}?". urldecode(http_build_query($vk_auth_params))."'>Войти vk</a></p>";
