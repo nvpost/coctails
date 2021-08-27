@@ -1,7 +1,7 @@
 
 
 
-let app = new Vue({
+let coctail_app = new Vue({
 
     el: '#coctail_app',
     components: {

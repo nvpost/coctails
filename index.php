@@ -27,7 +27,6 @@ if(isset($_GET['page'])){
             require_once 'components/page_meta.php';
         ?>
 
-<!--<script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"  type="application/javascript"></script>-->
 <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
 <script src="https://unpkg.com/vue-multiselect@2.1.0" type="application/javascript"></script>
 <link rel="stylesheet" href="https://unpkg.com/vue-multiselect@2.1.0/dist/vue-multiselect.min.css">

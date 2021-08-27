@@ -12,6 +12,10 @@ function doLink($what, $l){
 require 'components/more_block/moreCoctails.php';
 ?>
 
+<script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@latest/dist/js/splide.min.js"></script>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@splidejs/splide@latest/dist/css/splide.min.css">
+
 <div class="coctail_page_container ">
     <div class="coctail_page coctail_item container">
         <div class="coctail_page_header ">
@@ -80,9 +84,11 @@ require 'components/more_block/moreCoctails.php';
     <div class="coctail_bottom_content">
             <div class="more_from more_from_tag">
                 <h3>Похожие коктейли</h3>
+
                 <?php
                 moreCoctailsFoo($coctail_tags, 'tags', 'tag');
                 ?>
+
             </div>
 
             <div class="more_from more_from_ing">
@@ -103,5 +109,8 @@ require 'components/more_block/moreCoctails.php';
         <a href="https://ru.inshaker.com<?=$coctail['origin_url']?>" target="_blank">Источник ru.inshaker.com </a>
     </div>
 </div>
+
+
+
 
 <script src="<?=$home_url?>assets/cart_item_scripts.js"></script>

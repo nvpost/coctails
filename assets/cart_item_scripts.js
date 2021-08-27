@@ -2,14 +2,7 @@
 // rating_stars
 //
 
-document.addEventListener("DOMContentLoaded", function() {
-    active_rating_star = document.querySelectorAll('.rating_star')
-    active_rating_star.forEach(i=>{
-        i.addEventListener('mouseover', mouseInActiveStar.bind())
-        i.addEventListener('mouseout', mouseOutActiveStar.bind())
-        i.addEventListener('click', setNewOwnRating.bind())
-    })
-});
+
 
 
 
@@ -54,6 +47,29 @@ function setNewOwnRating(e){
 document.querySelector('.rating_field').style.display='flex';
 
 
-//
-// rating_stars
-//
+
+document.addEventListener("DOMContentLoaded", function() {
+    active_rating_star = document.querySelectorAll('.rating_star')
+    active_rating_star.forEach(i=>{
+        i.addEventListener('mouseover', mouseInActiveStar.bind())
+        i.addEventListener('mouseout', mouseOutActiveStar.bind())
+        i.addEventListener('click', setNewOwnRating.bind())
+    })
+
+
+    let slideParams = {
+        type   : 'loop',
+        perPage: 1,
+        speed: 1000,
+        autoWidth: true,
+        gap: '5em',
+        // autoplay:true
+    }
+    let tag_slider = new Splide( '#splide_tags', slideParams).mount();
+    let ing_slider = new Splide( '#splide_ingredients', slideParams).mount();
+    let tool_slider = new Splide( '#splide_tools', slideParams).mount();
+
+});
+
+
+

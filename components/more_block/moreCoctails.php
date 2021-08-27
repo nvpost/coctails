@@ -24,11 +24,16 @@ function moreCoctailsFoo($arr, $table, $field){
     $slicedMoreCoctails = array_map("unserialize", array_unique(array_map("serialize", $slicedMoreCoctails)));
 
     $catalogHtml = new CatalogWidgetClass($slicedMoreCoctails);
-    $catalog = $catalogHtml->getCatalogItem();
+    $catalog = $catalogHtml->getCatalogItem('slider');
 //    require 'components/catalogWidget.php';
-    echo "<div class='catalog_container'>";
+    //echo "<div class='catalog_container'>";
 
+    echo "<div class='splide' id='splide_{$table}'>
+                    <div class='splide__track'>
+                        <ul class='splide__list'>";
     echo $catalog;
-    echo "</div>";
+                        echo "</ul>";
+                    echo "</div>";
+                echo "</div>";
 
 }
