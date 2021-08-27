@@ -9,11 +9,23 @@ spl_autoload_register(function ($class_name) {
     include 'Classes/'.$class_name . '.php';
 });
 
-$t = new TimeLogClass('app')
+$t = new TimeLogClass('app');
+
+require_once 'func.php';
+
+
+$page = 0;
+if(isset($_GET['page'])){
+    $page = $_GET['page']-1;
+}
+
+
 ?>
 <head>
 <link href="<?=$home_url?>assets/css.css" rel="stylesheet">
-
+        <?php
+            require_once 'components/page_meta.php';
+        ?>
 
 <!--<script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"  type="application/javascript"></script>-->
 <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
@@ -36,15 +48,7 @@ $t = new TimeLogClass('app')
 
 
 <?php
-require_once 'func.php';
 
-
-
-
-$page = 0;
-if(isset($_GET['page'])){
-    $page = $_GET['page']-1;
-}
 
 require_once 'components/page_parts/nav_header.php';
 
@@ -81,6 +85,9 @@ else{
 </div>
 </div>
 
+<script>
+    let home_url = '<?=$home_url?>'
+</script>
 
 </body>
 <?php

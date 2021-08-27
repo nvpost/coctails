@@ -9,11 +9,11 @@ function checkUser($userInfo){
     //}
     $user = pdSql($sql);
     if($user){
-        echo "Пользователь есть";
+//        echo "Пользователь есть";
         //deb($user[0]);
         loginUser($user[0]);
     }else{
-        echo "Пользователя нет, добавляем в базу";
+//        echo "Пользователя нет, добавляем в базу";
         addUserToBase($userInfo);
     }
 
@@ -44,7 +44,7 @@ function addUserToBase($userInfo){
 
 function loginUser($userInfo){
     global $home_url;
-    deb($userInfo);
+//    deb($userInfo);
     $img_src = ($userInfo['method']=='ya')?
         "https://avatars.yandex.net/get-yapic/".$userInfo['img']."/islands-retina-small":
         $userInfo['img'];

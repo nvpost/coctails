@@ -7,7 +7,7 @@
         <?php
         for($i=1; $i<=5; $i++){
 
-            $class = ($i<$coctail_rating)?"active_star":"";
+            $class = ($i<=$coctail_rating)?"active_star":"";
             echo "<i class='{$class} fas fa-star rating_star' data-star={$i}></i>";
         }
         ?>

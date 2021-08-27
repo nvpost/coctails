@@ -1,10 +1,8 @@
 <?php
 require_once '../func.php';
-//require_once '../config.php';
+
 require_once 'auth_data.php';
 
-
-echo $link = '<p><a href="' . $ya_url . '?' . urldecode(http_build_query($ya_params)) . '">Аутентификация через Yandex</a></p>';
 
 if (isset($_GET['code'])) {
     $result = false;
@@ -43,9 +41,9 @@ if (isset($_GET['code'])) {
     }
 
     if ($result) {
-        echo "<pre>";
-        print_r($userInfo);
-        echo "</pre>";
+//        echo "<pre>";
+//        print_r($userInfo);
+//        echo "</pre>";
 
         $pre_img = 'https://avatars.yandex.net/get-yapic/';
         $img_size = 'islands-retina-small';
@@ -67,7 +65,6 @@ if (isset($_GET['code'])) {
 
 
         $set_user = checkUser($prepared_data);
-        deb($prepared_data);
         if($set_user){
             header("Location: {$home_url}");
         }

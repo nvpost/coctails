@@ -51,7 +51,7 @@ function setNewOwnRating(e){
     })
 }
 
-document.querySelector('.rating_field').style.display='block';
+document.querySelector('.rating_field').style.display='flex';
 
 
 //

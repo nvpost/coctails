@@ -339,3 +339,6 @@ a.active_page{
 .rating_field{
     display: none;
 }
+.publicly_rating{
+    margin-left: 10px;
+}

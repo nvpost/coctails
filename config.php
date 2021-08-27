@@ -9,8 +9,6 @@ $db = new PDO('mysql:host=localhost;dbname=coctails_base;charset=UTF8', 'root', 
 $limit = 20;
 $pagintation_step = 5;
 
-echo "<script>
-let home_url = '{$home_url}'
-</script>";
+
 
 

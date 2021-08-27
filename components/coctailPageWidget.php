@@ -18,13 +18,14 @@ require 'components/more_block/moreCoctails.php';
             <h1>
                 <?=$coctail['name']?>
             </h1>
-            <?php
-                require_once "page_parts/raing_view.php";
-            ?>
 
-            <p>
+            <h3>
                 <?=$coctail['en_name']?>
-            </p>
+            </h3>
+
+            <?php
+            require_once "page_parts/raing_view.php";
+            ?>
         </div>
         <div class="coctail_page_content">
             <div class="coctail_text_info">
