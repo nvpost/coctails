@@ -33,12 +33,6 @@ function loginBar(){
     </script>";
 
 
-//    $login_bar .= "<div class='login_bar_dropdown'>";
-//        $login_bar .= "<p><a href='{$vk_auth_url}?". urldecode(http_build_query($vk_auth_params))."'>Войти vk</a></p>";
-//        $login_bar .= "<p><a href='{$ya_url}?" . urldecode(http_build_query($ya_params)) . "'>Войти через Yandex</a></p>";
-//        $login_bar .= "<p><a href='{$google_url}?" . urldecode(http_build_query($google_params)) . "'>Войти через Google</a></p>";
-//    $login_bar .= "</div>";
-
     $login_bar .= "</div>";
 
 

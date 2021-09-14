@@ -1,0 +1,7 @@
+.add_form form>div{
+    margin-bottom: 30px;
+}
+
+.ingredient_row{
+    display: flex;
+}

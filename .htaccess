@@ -16,6 +16,8 @@ RewriteRule (*UTF8)^tag=(.*+)/?$ index.php?tag=$1 [L]
 RewriteRule (*UTF8)^tool=(.*+)/?$ index.php?tool=$1 [L]
 RewriteRule (*UTF8)^ingredient=(.*+)/?$ index.php?ingredient=$1 [L]
 
+RewriteRule ^add_coctail/?$ pages/add_coctail.php [L]
+
 
 
 </IfModule>
