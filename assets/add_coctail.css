@@ -5,3 +5,15 @@
 .ingredient_row{
     display: flex;
 }
+.ingredient_row i.fas{
+    margin-left: 20px;
+}
+.ingredient_row i.fas{
+    color: #ec0000;
+    opacity: 0.6;
+    transition: opacity 0.3s;
+    cursor: pointer;
+}
+.ingredient_row i.fas:hover{
+    opacity: 1;
+}
