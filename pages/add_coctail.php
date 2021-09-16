@@ -23,45 +23,77 @@ require_once '../config.php';
                 <textarea placeholder="Описание"></textarea><br>
                 Картинка: <input type="file">
             </div>
-            <div class="tables_field" v-for="(table, table_index) in table_field">
+            <div class="table_data">
+                <div class="table_data_row" v-for="(row, row_index) in ing_rows">
+<input-temp placeholder="inputTemplate">
+                    <input type="text"
+                           placeholder="Ингредиент"
+                           v-model="ing_rows[row_index].ingredient"
+                           @blur="checkForAddRow('ing_rows', row_index)"
+                           :key="row_index+'_ingredient'"
+                    >*
+                    <input type="text"
+                           placeholder="Сколько"
+                           v-model="ing_rows[row_index].amount"
+                           @blur="checkForAddRow('ing_rows', row_index)"
+                           :key="row_index+'_amount'"
+                    >*
+                    <select name="unit"
+                            v-model="ing_rows[row_index].unit"
+                            @blur="checkForAddRow('ing_rows', row_index)"
+                            :key="row_index+'_unit'"
+                    >
+                        <option v-for="(unit, index) in ing_units" :value="unit" >{{unit}}</option>
+                    </select>
 
-                <div class="add_form_ingredients">
 
-                    <template class="ingredient_row" v-for="(inp, inp_index) in table.front">
-                        {{table.root_model}}
-                        <input
-                            v-if="inp.type=='text'"
-                            :type="inp.type"
-                            :placeholder="inp.placeholder"
-                            v-model="table.root_model[inp.model]"
-                            :key="table_index+'_'+inp_index"
-                        >
-                        <select v-if="inp.type=='select'"
+                <i class="fas fa-trash"
+                   v-if="validateRow('ing_rows', row_index)"
+                   @click="deleteRow('ing_rows', row_index)"
+                ></i>
 
-                                @blur="checkForAddRow('ing_rows', ing_row_index)"
-
-                        >
-                            <option v-for="(unit, index) in inp.options" :value="unit" >{{unit}}</option>
-                        </select>
-
-
-<!--                        v-model="table.root_model[inp.model]"-->
-<!--                        @blur="checkForAddRow('ing_rows', ing_row_index)"-->
-
-<!--                        <i class="fas fa-trash"-->
-<!--                           v-if="validateRow('ing_rows', ing_row_index)"-->
-<!--                           @click="deleteRow('ing_rows', ing_row_index)"-->
-<!--                        ></i>-->
-
-                    </template>
                 </div>
+
             </div>
         </form>
     </div>
 </div>
 
 
-
+<!--<div class="tables_field" v-for="(table, table_key, table_index) in table_field">-->
+<!---->
+<!--    <div class="add_form_ingredients">-->
+<!---->
+<!--        <template class="ingredient_row" v-for="(inp, inp_index) in table.front">-->
+<!--            {{table.root_model}} /-->
+<!--            {{table_index}} /-->
+<!--            {{inp.model}}-->
+<!--            <input-->
+<!--                v-if="inp.type=='text'"-->
+<!--                :type="inp.type"-->
+<!--                :placeholder="inp.placeholder"-->
+<!--                :key="table_index+'_'+inp_index"-->
+<!--                @input = "do_vModel($event, table.root_model, table_index, inp.model)"-->
+<!--            >-->
+<!--            <select v-if="inp.type=='select'"-->
+<!--                    @change = "do_vModel($event, table.root_model, table_index, inp.model)"-->
+<!---->
+<!--            >-->
+<!--                <option v-for="(unit, index) in inp.options" :value="unit" >{{unit}}</option>-->
+<!--            </select>-->
+<!---->
+<!---->
+<!--            <!--                        v-model="table.root_model[inp.model]"-->-->
+<!--            <!--                        @blur="checkForAddRow('ing_rows', ing_row_index)"-->-->
+<!---->
+<!--            <!--                        <i class="fas fa-trash"-->-->
+<!--            <!--                           v-if="validateRow('ing_rows', ing_row_index)"-->-->
+<!--            <!--                           @click="deleteRow('ing_rows', ing_row_index)"-->-->
+<!--            <!--                        ></i>-->-->
+<!---->
+<!--        </template>-->
+<!--    </div>-->
+<!--</div>-->
 <!--<input-->
 <!--    v-if="inp.type=='text'"-->
 <!--    :type="inp.type"-->

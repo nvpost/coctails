@@ -15,7 +15,8 @@ let addApp = new Vue({
                         {placeholder: 'Сколько', type: 'text', model:'amount'},
                         {type: 'select', options:['мг', 'г', 'шт'], model:'unit'},
                     ],
-                    root_model: 'ing_rows'
+                    root_model: 'ing_rows',
+                    data:[]
                 },
                 tools:{
                     label: 'Штуки',
@@ -29,7 +30,8 @@ let addApp = new Vue({
                         {placeholder: 'Сколько', type: 'text', model:'amount'},
                         {type: 'select', model:'unit'},
                     ],
-                    root_model: 'tools_rows'
+                    root_model: 'tools_rows',
+                    data:[]
                 },
                 process:{
                     label: 'Как делать',
@@ -39,7 +41,8 @@ let addApp = new Vue({
                     front:[
                         {placeholder: 'процесс', type: 'text', model:'process'},
                     ],
-                    root_model: 'process_rows'
+                    root_model: 'process_rows',
+                    data:[]
                 }
             },
             ing_rows_template:{
@@ -47,24 +50,22 @@ let addApp = new Vue({
                 amount: "",
                 unit: ""
             },
-            ing_rows: [],
+            ing_rows: [
+            ],
             tools_rows: [],
             process_rows: [],
-            ing_units: ['мг', 'г', 'шт']
+            ing_units: ['мг', 'г', 'шт'],
+
         }
     },
-    created(){
-        // for(var table in this.table_field){
-        //     console.log(table)
-        //     let table_copy = Object.assign({}, this.table_field[table].template)
-        //     [table+'_rows'].push(table_copy)
-        // }
-
-        // let ing_rows_template_copy = Object.assign({}, this.ing_rows_template)
-        // this.ing_rows.push(ing_rows_template_copy)
-
-    },
     methods:{
+
+        do_vModel(event, rootModel, index, lineModel){
+            let vModel = addApp[rootModel][index][lineModel]
+            console.log('vModel', vModel)
+            console.log(event.target.value, rootModel, index, lineModel)
+            addApp[rootModel][index][lineModel] = event.target.value
+        },
         setTemplate(){
             for(var table in this.table_field){
                 console.log(table)
@@ -101,3 +102,16 @@ let addApp = new Vue({
         }
     }
 })
+
+var inputTemplate = `
+                    <input type="text"
+                           :placeholder="placeholder"
+                    >
+`
+
+Vue.component('input-temp', {
+    props:{
+        placeholder: ''},
+    template: inputTemplate
+})
+
