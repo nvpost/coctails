@@ -11,7 +11,7 @@
                v-model="<?=$model?>[row_index].<?=$model_tails[0]?>"
                @blur="checkForAddRow('<?=$model?>', row_index)"
                :key="row_index+'_<?=$model_tails[0]?>'"
-        >*
+        >
     <?php }?>
     <?php if(isset($model_tails[1])){ ?>
         <input type="text"
@@ -19,7 +19,7 @@
                v-model="<?=$model?>[row_index].<?=$model_tails[1]?>"
                @blur="checkForAddRow('<?=$model?>', row_index)"
                :key="row_index+'_<?=$model_tails[1]?>'"
-        >*
+        >
     <?php }?>
     <?php if(isset($model_tails[2])){ ?>
         <select name="unit"

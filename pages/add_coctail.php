@@ -11,24 +11,33 @@ require_once '../config.php';
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
 
+    <link rel="stylesheet" href="<?=$home_url?>assets/css.css"></link>
     <link rel="stylesheet" href="<?=$home_url?>assets/add_coctail.css"></link>
 </head>
-
-<div class="add_app" id="add_app">
+<body>
+<div class="add_app container" id="add_app">
     <div class="add_form">
         <form action="">
             <div class="add_form_main_info">
-                <input type="text" placeholder="Название">*<br>
+                <input type="text" placeholder="Название*"><br>
                 <input type="text" placeholder="Название (eng)"><br>
                 <textarea placeholder="Описание"></textarea><br>
-                Картинка: <input type="file">
+                Картинка:
+                <input
+                    type="file"
+                    v-model="img_src"
+                    @change = "add_prewiev"
+                >
+                <div class="preview_img">
+                    <img src="" alt="" id ="preview_img" >
+                </div>    
             </div>
             <div class="table_data">
                 <div class="ing_rows add_table_rows">
                     <h3>Ингредиенты</h3>
                     <?php
                         $model = "ing_rows";
-                        $placeholders = ["Ингредиент", "Сколько"];
+                        $placeholders = ["Ингредиент*", "Сколько*"];
                         $model_tails = ["ingredient", "amount", "unit"];
                         require "../components/add_parts/table_rows.php";
                     ?>
@@ -37,7 +46,7 @@ require_once '../config.php';
                     <h3>Штуки</h3>
                     <?php
                     $model = "tools_rows";
-                    $placeholders = ["Штука", "Сколько"];
+                    $placeholders = ["Штука*", "Сколько*"];
                     $model_tails = ["name", "amount", "unit"];
                     require "../components/add_parts/table_rows.php";
                     ?>
@@ -47,7 +56,7 @@ require_once '../config.php';
                     <h3>Как делать</h3>
                     <?php
                     $model = "process_rows";
-                    $placeholders = ["налить это вот туда"];
+                    $placeholders = ["налить это вот туда*"];
                     $model_tails = ["process_row"];
                     require "../components/add_parts/table_rows.php";
                     ?>
@@ -60,81 +69,7 @@ require_once '../config.php';
 </div>
 
 
-<!--<div class="tables_field" v-for="(table, table_key, table_index) in table_field">-->
-<!---->
-<!--    <div class="add_form_ingredients">-->
-<!---->
-<!--        <template class="ingredient_row" v-for="(inp, inp_index) in table.front">-->
-<!--            {{table.root_model}} /-->
-<!--            {{table_index}} /-->
-<!--            {{inp.model}}-->
-<!--            <input-->
-<!--                v-if="inp.type=='text'"-->
-<!--                :type="inp.type"-->
-<!--                :placeholder="inp.placeholder"-->
-<!--                :key="table_index+'_'+inp_index"-->
-<!--                @input = "do_vModel($event, table.root_model, table_index, inp.model)"-->
-<!--            >-->
-<!--            <select v-if="inp.type=='select'"-->
-<!--                    @change = "do_vModel($event, table.root_model, table_index, inp.model)"-->
-<!---->
-<!--            >-->
-<!--                <option v-for="(unit, index) in inp.options" :value="unit" >{{unit}}</option>-->
-<!--            </select>-->
-<!---->
-<!---->
-<!--            <!--                        v-model="table.root_model[inp.model]"-->-->
-<!--            <!--                        @blur="checkForAddRow('ing_rows', ing_row_index)"-->-->
-<!---->
-<!--            <!--                        <i class="fas fa-trash"-->-->
-<!--            <!--                           v-if="validateRow('ing_rows', ing_row_index)"-->-->
-<!--            <!--                           @click="deleteRow('ing_rows', ing_row_index)"-->-->
-<!--            <!--                        ></i>-->-->
-<!---->
-<!--        </template>-->
-<!--    </div>-->
-<!--</div>-->
-<!--<input-->
-<!--    v-if="inp.type=='text'"-->
-<!--    :type="inp.type"-->
-<!--    :placeholder="inp.placeholder"-->
-<!--    v-model="table.root_model[inp.model]"-->
-<!--    v-model="ing_rows[ing_row_index][inp.model]"-->
-<!--    @blur="checkForAddRow('ing_rows', ing_row_index)"-->
-<!--    :key="ing_row_index+'_'+inp_index"-->
-<!-->-->
-<!--<select v-if="inp.type=='select'"-->
-<!---->
-<!--        @blur="checkForAddRow('ing_rows', ing_row_index)"-->
-<!--        :key="ing_row_index+'_'+inp_index"-->
-<!-->-->
-<!--    <option v-for="(unit, index) in inp.options" :value="unit" >{{unit}}</option>-->
-<!--</select>-->
-
-<!--<input type="text"-->
-<!--       placeholder="Ингредиент"-->
-<!--       v-model="ing_rows[ing_row_index].ingredient"-->
-<!--       @blur="checkForAddRow('ing_rows', ing_row_index)"-->
-<!--       :key="ing_row_index+'_ingredient'"-->
-<!-->*<br>-->
-<!--<input type="text"-->
-<!--       placeholder="Сколько"-->
-<!--       v-model="ing_rows[ing_row_index].amount"-->
-<!--       @blur="checkForAddRow('ing_rows', ing_row_index)"-->
-<!--       :key="ing_row_index+'_amount'"-->
-<!-->*<br>-->
-<!--<select name="unit"-->
-<!--        v-model="ing_rows[ing_row_index].unit"-->
-<!--        @blur="checkForAddRow('ing_rows', ing_row_index)"-->
-<!--        :key="ing_row_index+'_unit'"-->
-<!-->-->
-<!--    <option v-for="(unit, index) in ing_units" :value="unit" >{{unit}}</option>-->
-<!--</select>-->
-<!--<i class="fas fa-trash"-->
-<!--   v-if="validateRow('ing_rows', ing_row_index)"-->
-<!--   @click="deleteRow('ing_rows', ing_row_index)"-->
-<!--></i>-->
-
+</body>
 
 <script src="<?=$home_url?>assets/add_front.js"></script>
 <script>

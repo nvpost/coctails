@@ -55,19 +55,13 @@ let addApp = new Vue({
             tools_rows: [],
             process_rows: [],
             ing_units: ['мг', 'г', 'шт'],
-
+            img_src:""
         }
     },
     methods:{
 
-        do_vModel(event, rootModel, index, lineModel){
-            let vModel = addApp[rootModel][index][lineModel]
-            console.log(event.target.value, rootModel, index, lineModel)
-            addApp[rootModel][index][lineModel] = event.target.value
-        },
         setTemplate(){
             for(var table in this.table_field){
-                console.log(table)
                 let table_copy = Object.assign({}, this.table_field[table].template)
                     addApp[table+'_rows'].push(table_copy)
             }
@@ -100,19 +94,19 @@ let addApp = new Vue({
                 this[block].splice(index, 1);
             }
 
+        },
+        add_prewiev(event){
+            console.log(event.target.files[0])
+            var img = event.target.files[0]
+            var reader = new FileReader();
+
+
+            document.querySelector('#preview_img').setAttribute('src', event.target.result)
+
+            let img_base64 = reader.readAsDataURL(img)
+
+            console.log(img_base64)
         }
     }
-})
-
-var inputTemplate = `
-                    <input type="text"
-                           :placeholder="placeholder"
-                    >
-`
-
-Vue.component('input-temp', {
-    props:{
-        placeholder: ''},
-    template: inputTemplate
 })
 
