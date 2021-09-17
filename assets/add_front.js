@@ -62,7 +62,6 @@ let addApp = new Vue({
 
         do_vModel(event, rootModel, index, lineModel){
             let vModel = addApp[rootModel][index][lineModel]
-            console.log('vModel', vModel)
             console.log(event.target.value, rootModel, index, lineModel)
             addApp[rootModel][index][lineModel] = event.target.value
         },
@@ -82,6 +81,7 @@ let addApp = new Vue({
         },
         validateRow(block, index, validate=true){
             let row = this[block][index]
+
             let line_is_ready = 0
             if(index+1==this[block].length||validate){
                 for(var i in row){
@@ -90,7 +90,8 @@ let addApp = new Vue({
                     }
                 }
             }
-            return line_is_ready==3
+            n = block=='process_rows'?1:3
+            return line_is_ready==n
         },
 
         deleteRow(block, index){

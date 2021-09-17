@@ -24,35 +24,35 @@ require_once '../config.php';
                 Картинка: <input type="file">
             </div>
             <div class="table_data">
-                <div class="table_data_row" v-for="(row, row_index) in ing_rows">
-<input-temp placeholder="inputTemplate">
-                    <input type="text"
-                           placeholder="Ингредиент"
-                           v-model="ing_rows[row_index].ingredient"
-                           @blur="checkForAddRow('ing_rows', row_index)"
-                           :key="row_index+'_ingredient'"
-                    >*
-                    <input type="text"
-                           placeholder="Сколько"
-                           v-model="ing_rows[row_index].amount"
-                           @blur="checkForAddRow('ing_rows', row_index)"
-                           :key="row_index+'_amount'"
-                    >*
-                    <select name="unit"
-                            v-model="ing_rows[row_index].unit"
-                            @blur="checkForAddRow('ing_rows', row_index)"
-                            :key="row_index+'_unit'"
-                    >
-                        <option v-for="(unit, index) in ing_units" :value="unit" >{{unit}}</option>
-                    </select>
-
-
-                <i class="fas fa-trash"
-                   v-if="validateRow('ing_rows', row_index)"
-                   @click="deleteRow('ing_rows', row_index)"
-                ></i>
-
+                <div class="ing_rows add_table_rows">
+                    <h3>Ингредиенты</h3>
+                    <?php
+                        $model = "ing_rows";
+                        $placeholders = ["Ингредиент", "Сколько"];
+                        $model_tails = ["ingredient", "amount", "unit"];
+                        require "../components/add_parts/table_rows.php";
+                    ?>
                 </div>
+                <div class="tools_rows add_table_rows">
+                    <h3>Штуки</h3>
+                    <?php
+                    $model = "tools_rows";
+                    $placeholders = ["Штука", "Сколько"];
+                    $model_tails = ["name", "amount", "unit"];
+                    require "../components/add_parts/table_rows.php";
+                    ?>
+                </div>
+
+                <div class="process_rows add_table_rows">
+                    <h3>Как делать</h3>
+                    <?php
+                    $model = "process_rows";
+                    $placeholders = ["налить это вот туда"];
+                    $model_tails = ["process_row"];
+                    require "../components/add_parts/table_rows.php";
+                    ?>
+                </div>
+
 
             </div>
         </form>
