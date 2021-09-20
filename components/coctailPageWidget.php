@@ -72,8 +72,6 @@ require 'components/more_block/moreCoctails.php';
                         $class ='tags';
                         echo "<a class='{$class}' href='{$href}'>".str_replace(" ", "&nbsp;", $tag['tag'])."</a> ";
                     }
-
-
                     //require_once 'components/tags.php';
                     ?>
                 </div>

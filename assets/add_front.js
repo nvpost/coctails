@@ -50,6 +50,9 @@ let addApp = new Vue({
                 amount: "",
                 unit: ""
             },
+            coctail_label: '',
+            coctail_label_en:'',
+            coctail_descr:'',
             ing_rows: [
             ],
             tools_rows: [],
@@ -96,16 +99,18 @@ let addApp = new Vue({
 
         },
         add_prewiev(event){
-            console.log(event.target.files[0])
-            var img = event.target.files[0]
-            var reader = new FileReader();
 
+            let file = event.target.files[0]
+            console.log(file)
 
-            document.querySelector('#preview_img').setAttribute('src', event.target.result)
-
-            let img_base64 = reader.readAsDataURL(img)
-
-            console.log(img_base64)
+            var output = document.getElementById('preview_img');
+            output.src = URL.createObjectURL(file);
+            console.log(output)
+            // let home_url = "http://localhost/coctails/"
+            // fetch(home_url+'components/add_parts/add_img.php',{
+            //     method: "POST"
+            // }).then(res=>res.json())
+            //     .then(data=>console.log(data))
         }
     }
 })

@@ -1,4 +1,5 @@
 .idea/
 imgs/
+tmp_imgs/
 config.php
 auth/auth_data.php

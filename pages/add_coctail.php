@@ -19,18 +19,30 @@ require_once '../config.php';
     <div class="add_form">
         <form action="">
             <div class="add_form_main_info">
-                <input type="text" placeholder="Название*"><br>
-                <input type="text" placeholder="Название (eng)"><br>
-                <textarea placeholder="Описание"></textarea><br>
+                <div class="main_info_label">
+                    <input type="text" name="coctail_label"
+                           class="coctail_label"
+                           placeholder="Название*"
+                           v-model="coctail_label"
+                    >
+                    <input type="text" name="coctail_label_en"
+                           class="coctail_label_en"
+                           placeholder="Название (eng)"
+                           v-model="coctail_label_en"
+                    >
+                </div>
+
+                <textarea name="coctail_descr"
+                          placeholder="Описание"
+                          v-model="coctail_descr"
+                ></textarea><br>
                 Картинка:
                 <input
                     type="file"
                     v-model="img_src"
                     @change = "add_prewiev"
+                    id="img_upload"
                 >
-                <div class="preview_img">
-                    <img src="" alt="" id ="preview_img" >
-                </div>    
             </div>
             <div class="table_data">
                 <div class="ing_rows add_table_rows">
@@ -46,7 +58,7 @@ require_once '../config.php';
                     <h3>Штуки</h3>
                     <?php
                     $model = "tools_rows";
-                    $placeholders = ["Штука*", "Сколько*"];
+                    $placeholders = ["Штука (лед, трубочка, бокал...)*", "Сколько*"];
                     $model_tails = ["name", "amount", "unit"];
                     require "../components/add_parts/table_rows.php";
                     ?>
@@ -65,6 +77,10 @@ require_once '../config.php';
 
             </div>
         </form>
+
+        <?php
+            require_once '../components/add_parts/add_preview.php';
+        ?>
     </div>
 </div>
 

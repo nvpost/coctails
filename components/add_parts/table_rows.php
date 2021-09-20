@@ -7,6 +7,7 @@
     <span>{{row_index+1}}. </span>
     <?php if(isset($model_tails[0])){ ?>
         <input type="text"
+               class="input_name"
                placeholder="<?=$placeholders[0]?>"
                v-model="<?=$model?>[row_index].<?=$model_tails[0]?>"
                @blur="checkForAddRow('<?=$model?>', row_index)"
@@ -15,6 +16,7 @@
     <?php }?>
     <?php if(isset($model_tails[1])){ ?>
         <input type="text"
+               class="input_kolvo"
                placeholder="<?=$placeholders[1]?>"
                v-model="<?=$model?>[row_index].<?=$model_tails[1]?>"
                @blur="checkForAddRow('<?=$model?>', row_index)"
