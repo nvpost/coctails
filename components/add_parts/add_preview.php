@@ -4,9 +4,9 @@
 <h3>Превью</h3>
 <div class="coctail_page coctail_item container">
     <div class="coctail_page_header ">
-        <h2>
+        <h1>
             {{coctail_label}}
-        </h2>
+        </h1>
 
         <h3>
             {{coctail_label_en}}

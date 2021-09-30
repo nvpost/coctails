@@ -111,6 +111,18 @@ let addApp = new Vue({
             //     method: "POST"
             // }).then(res=>res.json())
             //     .then(data=>console.log(data))
+        },
+        checkItem(field){
+            let home_url = "http://localhost/coctails/"
+            let data = this[field]
+            fetch(home_url+'components/add_parts/check_data.php',{
+                method: "POST",
+                body: JSON.stringify({'field':field, 'data':data})
+            })
+                .then(res=>res.json())
+                .then(data => console.log(data))
+
+            console.log("coctail_label ",coctail_label, model)
         }
     }
 })

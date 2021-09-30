@@ -24,6 +24,7 @@ require_once '../config.php';
                            class="coctail_label"
                            placeholder="Название*"
                            v-model="coctail_label"
+                           @blur="checkItem('coctail_label')"
                     >
                     <input type="text" name="coctail_label_en"
                            class="coctail_label_en"
