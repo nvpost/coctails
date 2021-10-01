@@ -33,6 +33,10 @@ class SQLModelClass
         $this->sqlArray['orderBy'] = $orderBy;
         return $this;
     }
+    public function groupBy($groupBy){
+        $this->sqlArray['groupBy'] = $groupBy;
+        return $this;
+    }
 
     public function limit($l){
         $this->sqlArray['limit'] = $l;
@@ -51,6 +55,7 @@ class SQLModelClass
     }
 
 
+
     //Сделать запрос
     public function prepareQwe(){
         $qwe = "";
@@ -66,6 +71,9 @@ class SQLModelClass
         }
         if(isset($this->sqlArray['orderBy'])){
             $qwe .= "ORDER BY {$this->sqlArray['orderBy']} ";
+        }
+        if(isset($this->sqlArray['groupBy'])){
+            $qwe .= "GROUP BY {$this->sqlArray['groupBy']} ";
         }
         if(isset($this->sqlArray['limit'])){
             $qwe .= "LIMIT {$this->sqlArray['limit']} ";

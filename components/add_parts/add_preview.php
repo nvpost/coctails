@@ -26,7 +26,7 @@
             </div>
             <div class="coctail_page_info">
                 <div class="tools_field">
-                    <div class="tools_table" v-if="ing_rows[0].ingredient">
+                    <div class="tools_table" v-if="ing_rows[0]">
                         <h4>Ингредиенты</h4>
                         <table>
                                 <tr v-for="(row, index) in ing_rows">
@@ -37,7 +37,7 @@
                         </table>
                     </div>
 
-                    <div class="tools_table" v-if="tools_rows[0].name">
+                    <div class="tools_table" v-if="tools_rows[0]">
                         <h4>Штуки</h4>
                         <table>
                             <tr v-for="(row, index) in tools_rows">

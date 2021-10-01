@@ -31,8 +31,16 @@ require_once '../config.php';
                            placeholder="Название (eng)"
                            v-model="coctail_label_en"
                     >
-                </div>
 
+                </div>
+                <div class="existing_coctail" v-if="existing_coctail.name">
+                    <p>Такой уже есть
+                        <a href="/coctail/{{existing_coctail.en_name}"
+                           target="_blank"
+                        >
+                            {{existing_coctail.name}} ({{existing_coctail.en_name}})
+                        </a></p>
+                </div>
                 <textarea name="coctail_descr"
                           placeholder="Описание"
                           v-model="coctail_descr"

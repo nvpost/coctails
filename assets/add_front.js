@@ -1,3 +1,4 @@
+let home_url = "http://localhost/coctails/"
 let addApp = new Vue({
     el: "#add_app",
     data() {
@@ -58,7 +59,8 @@ let addApp = new Vue({
             tools_rows: [],
             process_rows: [],
             ing_units: ['мг', 'г', 'шт'],
-            img_src:""
+            img_src:"",
+            existing_coctail: []
         }
     },
     methods:{
@@ -99,31 +101,42 @@ let addApp = new Vue({
 
         },
         add_prewiev(event){
-
             let file = event.target.files[0]
-            console.log(file)
 
             var output = document.getElementById('preview_img');
             output.src = URL.createObjectURL(file);
             console.log(output)
-            // let home_url = "http://localhost/coctails/"
-            // fetch(home_url+'components/add_parts/add_img.php',{
-            //     method: "POST"
-            // }).then(res=>res.json())
-            //     .then(data=>console.log(data))
         },
         checkItem(field){
-            let home_url = "http://localhost/coctails/"
-            let data = this[field]
+
+            let name = this[field]
             fetch(home_url+'components/add_parts/check_data.php',{
                 method: "POST",
-                body: JSON.stringify({'field':field, 'data':data})
+                body: JSON.stringify({'field':field, 'name':name})
             })
                 .then(res=>res.json())
-                .then(data => console.log(data))
+                .then(data => {
+                    if(data.res.length!=0){
+                        console.log('Уже есть')
+                        console.log(data.res)
+                        this.existing_coctail=data.res[0];
+                    }
+                })
+        },
+        ShowHint(event, field){
+            let tag = event.target.value
+            console.log(field)
 
-            console.log("coctail_label ",coctail_label, model)
+            fetch(home_url+'components/add_parts/show_hint.php',{
+                method: "POST",
+                body: JSON.stringify({'field':field, 'tag':tag})
+            })
+                .then(res=>res.json())
+                .then(data => {
+                    console.log(data)
+                })
         }
+
     }
 })
 

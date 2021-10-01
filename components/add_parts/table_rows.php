@@ -4,14 +4,15 @@
 ?>
 
 <div class="table_data_row" v-for="(row, row_index) in <?=$model?>">
-    <span>{{row_index+1}}. </span>
     <?php if(isset($model_tails[0])){ ?>
+
         <input type="text"
                class="input_name"
                placeholder="<?=$placeholders[0]?>"
                v-model="<?=$model?>[row_index].<?=$model_tails[0]?>"
                @blur="checkForAddRow('<?=$model?>', row_index)"
                :key="row_index+'_<?=$model_tails[0]?>'"
+               @change="ShowHint($event, '<?=$model_tails[0];?>')"
         >
     <?php }?>
     <?php if(isset($model_tails[1])){ ?>
