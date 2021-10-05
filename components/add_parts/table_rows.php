@@ -3,7 +3,8 @@
 
 ?>
 
-<div class="table_data_row" v-for="(row, row_index) in <?=$model?>">
+<template v-for="(row, row_index) in <?=$model?>">
+    <div class="table_data_row">
     <?php if(isset($model_tails[0])){ ?>
 
         <input type="text"
@@ -12,7 +13,7 @@
                v-model="<?=$model?>[row_index].<?=$model_tails[0]?>"
                @blur="checkForAddRow('<?=$model?>', row_index)"
                :key="row_index+'_<?=$model_tails[0]?>'"
-               @change="ShowHint($event, '<?=$model_tails[0];?>')"
+               @keyUp="ShowHint($event, '<?=$model_tails[0];?>')"
         >
     <?php }?>
     <?php if(isset($model_tails[1])){ ?>
@@ -38,4 +39,21 @@
        @click="deleteRow('<?=$model?>', row_index)"
     ></i>
 
-</div>
+    </div>
+
+    <?php if($model_tails[0]!='process_row'):?>
+        <div class="tools_hint" v-if="<?=$model_tails[0]?>_hints.length>0">
+
+            <div class="tools_hint_btn"
+                 v-for="(tool, index) in ingredient_hints.slice(0, 5)"
+                 @click="setModelFromTag('<?= $model?>',tool)"
+            >
+                {{tool}}
+            </div>
+        </div>
+    <?php endif;?>
+
+
+</template>
+
+

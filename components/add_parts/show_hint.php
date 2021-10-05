@@ -16,10 +16,24 @@ $tag = $data->tag;
 
 
 $qwe = new SQLModelClass();
-$qwe -> table($table);
 $qwe -> select('*');
+$qwe -> table($table);
 $qwe -> where($field." LIKE '%".$tag."%'");
-$qwe -> groupBy($field);
+//$qwe -> groupBy($field);
 $res = $qwe -> all();
 
-echo json_encode(['data' => $data, 'table' => $table, 'res' => $res]);
+$new_res = [];
+foreach ($res as $key => $val){
+    $val['count'] = array_count_values(array_column($res, $field))[$val[$field]];
+    $val['field'] = $field;
+    $val['origin_name'] = $val[$field];
+
+    $new_res[] = $val;
+
+}
+$flat_and_count = flatAndCount($new_res, $field);
+arsort($flat_and_count);
+
+
+
+echo json_encode(['data' => $data, 'table' => $table, 'res' => $flat_and_count]);

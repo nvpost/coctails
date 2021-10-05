@@ -60,7 +60,11 @@ let addApp = new Vue({
             process_rows: [],
             ing_units: ['мг', 'г', 'шт'],
             img_src:"",
-            existing_coctail: []
+            existing_coctail: [],
+            ingredient_hints: [],
+            sort_ingredient_hints: [],
+            tools_hints: [],
+            name_hints: [],
         }
     },
     methods:{
@@ -125,7 +129,9 @@ let addApp = new Vue({
         },
         ShowHint(event, field){
             let tag = event.target.value
-            console.log(field)
+            if(tag.length<3){
+                return false;
+            }
 
             fetch(home_url+'components/add_parts/show_hint.php',{
                 method: "POST",
@@ -134,7 +140,16 @@ let addApp = new Vue({
                 .then(res=>res.json())
                 .then(data => {
                     console.log(data)
+                    tools = Object.keys(data.res)
+                    this.ingredient_hints = Object.keys(data.res)
                 })
+        },
+        sort_hint_array(tools, name){
+            return tools.slice(0, 5);
+        },
+        setModelFromTag(model,tag){
+            this[model].push[tag]
+            console.log(model, tag)
         }
 
     }

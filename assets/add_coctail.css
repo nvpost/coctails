@@ -65,3 +65,18 @@ input.input_kolvo{
 input.input_name{
     width: 350px;
 }
+
+.tools_hint{
+    display: flex;
+}
+.tools_hint_btn{
+    padding: 10px;
+    border: 1px solid;
+    border-radius: 5px;
+    margin: 5px;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+.tools_hint_btn:hover{
+    box-shadow: 1px 1px 5px #a6a6a6;
+}

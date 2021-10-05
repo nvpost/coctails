@@ -62,6 +62,7 @@ require_once '../config.php';
                         $model_tails = ["ingredient", "amount", "unit"];
                         require "../components/add_parts/table_rows.php";
                     ?>
+
                 </div>
                 <div class="tools_rows add_table_rows">
                     <h3>Штуки</h3>
