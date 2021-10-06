@@ -42,11 +42,13 @@
     </div>
 
     <?php if($model_tails[0]!='process_row'):?>
-        <div class="tools_hint" v-if="<?=$model_tails[0]?>_hints.length>0">
+
+        <div class="tools_hint" v-if="<?=$model_tails[0]?>_hints.length>0 && row_index==0">
 
             <div class="tools_hint_btn"
                  v-for="(tool, index) in ingredient_hints.slice(0, 5)"
-                 @click="setModelFromTag('<?= $model?>',tool)"
+                 :data-row="row_index"
+                 @click="setModelFromTag($event,tool)"
             >
                 {{tool}}
             </div>

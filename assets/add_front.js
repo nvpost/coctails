@@ -147,9 +147,16 @@ let addApp = new Vue({
         sort_hint_array(tools, name){
             return tools.slice(0, 5);
         },
-        setModelFromTag(model,tag){
-            this[model].push[tag]
-            console.log(model, tag)
+        setModelFromTag(event, tag){
+            console.log(event.target, tag)
+            let row_index = event.target.getAttribute('data-row')
+            console.log(row_index)
+            this.ing_rows[row_index].ingredient = tag
+            this.ingredient_hints = []
+            //this[model].push[tag]
+
+        //    TODO Чистим хинт
+
         }
 
     }
