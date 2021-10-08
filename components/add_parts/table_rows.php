@@ -39,14 +39,32 @@
        @click="deleteRow('<?=$model?>', row_index)"
     ></i>
 
-    </div>
+    </div>{{row_index}} / <?=$model?> / <?=$model_tails[0];?> /
 
-    <?php if($model_tails[0]!='process_row'):?>
+    <?php if($model_tails[0]!=='process_row'):?>
         <div class="tools_hint" v-if="<?=$model_tails[0]?>_hints.length>0 && row_index==(<?=$model?>.length-1)">
 
             <div class="tools_hint_btn"
                  v-for="(tool, index) in ingredient_hints.slice(0, 5)"
+                 data-model_root="ing_rows"
                  :data-row="row_index"
+                 data-model_tail="ingredient"
+                 @click="setModelFromTag($event,tool)"
+            >
+                {{tool}}
+            </div>
+        </div>
+    <?php endif;?>
+
+
+    <?php if($model_tails[0]=='name'):?>
+        <div class="tools_hint" v-if="<?=$model_tails[0]?>_hints.length>0 && row_index==(<?=$model?>.length-1)">
+
+            <div class="tools_hint_btn"
+                 v-for="(tool, index) in name_hints.slice(0, 5)"
+                 data-model_root="tools_rows"
+                 :data-row="row_index"
+                 data-model_tail="name"
                  @click="setModelFromTag($event,tool)"
             >
                 {{tool}}

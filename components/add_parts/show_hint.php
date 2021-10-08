@@ -5,7 +5,8 @@ require "../../func.php";
 
 
 $fields=[
-    'ingredient' => 'ingredients'
+    'ingredient' => 'ingredients',
+    'name' => 'tools',
 ];
 
 $data = json_decode(file_get_contents('php://input'));

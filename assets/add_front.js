@@ -132,7 +132,7 @@ let addApp = new Vue({
             if(tag.length<3){
                 return false;
             }
-
+            console.log(field+"_hints")
             fetch(home_url+'components/add_parts/show_hint.php',{
                 method: "POST",
                 body: JSON.stringify({'field':field, 'tag':tag})
@@ -141,7 +141,8 @@ let addApp = new Vue({
                 .then(data => {
                     console.log(data)
                     tools = Object.keys(data.res)
-                    this.ingredient_hints = Object.keys(data.res)
+                    // this.ingredient_hints = Object.keys(data.res)
+                    this[field+"_hints"] = Object.keys(data.res)
                 })
         },
         sort_hint_array(tools, name){
@@ -150,12 +151,15 @@ let addApp = new Vue({
         setModelFromTag(event, tag){
             console.log(event.target, tag)
             let row_index = event.target.getAttribute('data-row')
-            console.log(row_index)
-            this.ing_rows[row_index].ingredient = tag
-            this.ingredient_hints = []
+            let model_root = event.target.getAttribute('data-model_root')
+            let model_tail = event.target.getAttribute('data-model_tail')
+            console.log(model_root, row_index, model_tail)
+            this[model_root][row_index][model_tail] = tag //ing_row[0].ingredient
+
+            console.log(this[model_root][row_index][model_tail])
+            this[model_tail+"_hints"] = []
             //this[model].push[tag]
 
-        //    TODO Чистим хинт
 
         }
 
