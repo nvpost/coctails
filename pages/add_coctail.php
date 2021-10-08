@@ -53,6 +53,9 @@ require_once '../config.php';
                     id="img_upload"
                 >
             </div>
+            <div class="coctail_tags">
+                теги
+            </div>
             <div class="table_data">
                 <div class="ing_rows add_table_rows">
                     <h3>Ингредиенты</h3>

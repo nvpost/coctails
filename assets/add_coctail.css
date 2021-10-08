@@ -26,11 +26,14 @@
     opacity: 1;
 }
 
+
+
 .add_app h3{
     margin-bottom: 5px;
 }
 
 .add_app input[type="text"],
+.add_app input[type="number"],
 .add_app textarea,
 .add_app select
 {
@@ -40,6 +43,14 @@
     border: none;
     border-bottom: 1px solid #cacaca;
 }
+
+.add_app .row_valid input,
+.add_app .row_valid textarea,
+.add_app .row_valid select
+{
+    border-bottom: 1px solid lightgreen;
+}
+
 .add_form_main_info textarea,
 .add_form_main_info input{
     width: 600px;

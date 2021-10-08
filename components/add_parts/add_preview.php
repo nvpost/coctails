@@ -20,6 +20,8 @@
             </p>
         </div>
 
+
+
         <div class="coctail_start_content">
             <div class="coctail_page_img">
                 <img src="" alt="" id ="preview_img">

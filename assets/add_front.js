@@ -65,6 +65,7 @@ let addApp = new Vue({
             sort_ingredient_hints: [],
             tools_hints: [],
             name_hints: [],
+            tags:[],
         }
     },
     methods:{
@@ -84,7 +85,6 @@ let addApp = new Vue({
         },
         validateRow(block, index, validate=true){
             let row = this[block][index]
-
             let line_is_ready = 0
             if(index+1==this[block].length||validate){
                 for(var i in row){
@@ -94,7 +94,8 @@ let addApp = new Vue({
                 }
             }
             n = block=='process_rows'?1:3
-            return line_is_ready==n
+            validateState = line_is_ready==n
+            return validateState
         },
 
         deleteRow(block, index){
@@ -129,13 +130,14 @@ let addApp = new Vue({
         },
         ShowHint(event, field){
             let tag = event.target.value
-            if(tag.length<3){
-                return false;
-            }
+            let like_flag=tag.length<3
+            // if(tag.length<3){
+            //     return false
+            // }
             console.log(field+"_hints")
             fetch(home_url+'components/add_parts/show_hint.php',{
                 method: "POST",
-                body: JSON.stringify({'field':field, 'tag':tag})
+                body: JSON.stringify({'field':field, 'tag':tag, 'like_flag': like_flag})
             })
                 .then(res=>res.json())
                 .then(data => {
@@ -148,20 +150,35 @@ let addApp = new Vue({
         sort_hint_array(tools, name){
             return tools.slice(0, 5);
         },
+        getTags(part=null){
+            fetch(home_url+'components/add_parts/пуе_hint.php',{
+                method: "POST",
+                body: JSON.stringify({'field':field, 'tag':tag})
+            })
+                .then(res=>res.json())
+                .then(data => {
+                    console.log(data)
+                    tools = Object.keys(data.res)
+                    // this.ingredient_hints = Object.keys(data.res)
+                    this[field+"_hints"] = Object.keys(data.res)
+                })
+        },
+
+
         setModelFromTag(event, tag){
             console.log(event.target, tag)
             let row_index = event.target.getAttribute('data-row')
             let model_root = event.target.getAttribute('data-model_root')
             let model_tail = event.target.getAttribute('data-model_tail')
-            console.log(model_root, row_index, model_tail)
+            // console.log(model_root, row_index, model_tail)
             this[model_root][row_index][model_tail] = tag //ing_row[0].ingredient
 
-            console.log(this[model_root][row_index][model_tail])
+            // console.log(this[model_root][row_index][model_tail])
             this[model_tail+"_hints"] = []
-            //this[model].push[tag]
+        },
 
 
-        }
+
 
     }
 })

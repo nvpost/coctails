@@ -4,7 +4,8 @@
 ?>
 
 <template v-for="(row, row_index) in <?=$model?>">
-    <div class="table_data_row">
+    <div class="table_data_row" :class="validateRow('<?=$model?>', row_index)?'row_valid':''">
+    {{row_index+1 }}.
     <?php if(isset($model_tails[0])){ ?>
 
         <input type="text"
@@ -17,7 +18,7 @@
         >
     <?php }?>
     <?php if(isset($model_tails[1])){ ?>
-        <input type="text"
+        <input type="number"
                class="input_kolvo"
                placeholder="<?=$placeholders[1]?>"
                v-model="<?=$model?>[row_index].<?=$model_tails[1]?>"
@@ -39,7 +40,7 @@
        @click="deleteRow('<?=$model?>', row_index)"
     ></i>
 
-    </div>{{row_index}} / <?=$model?> / <?=$model_tails[0];?> /
+    </div>
 
     <?php if($model_tails[0]!=='process_row'):?>
         <div class="tools_hint" v-if="<?=$model_tails[0]?>_hints.length>0 && row_index==(<?=$model?>.length-1)">
