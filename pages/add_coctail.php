@@ -54,7 +54,13 @@ require_once '../config.php';
                 >
             </div>
             <div class="coctail_tags">
-                теги
+                <h3>Категории (выбрать одну или несколько)</h3>
+                <div class="tag_list" v-if="tag_list.length>0">
+                    <div class="tag_item" v-for="tag in tag_list">{{tag}}</div>
+                </div>
+                <div class="loading" v-else>
+                    <img src="assets/icons/Rhombus.gif" alt="">
+                </div>
             </div>
             <div class="table_data">
                 <div class="ing_rows add_table_rows">

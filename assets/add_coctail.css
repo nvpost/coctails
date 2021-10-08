@@ -80,14 +80,23 @@ input.input_name{
 .tools_hint{
     display: flex;
 }
-.tools_hint_btn{
-    padding: 10px;
+.tools_hint_btn,
+.tag_item{
+    padding: 1px 7px;
     border: 1px solid;
     border-radius: 5px;
     margin: 5px;
     cursor: pointer;
+    box-shadow: 1px 1px 5px #a6a6a6;
     transition: all 0.3s;
 }
-.tools_hint_btn:hover{
-    box-shadow: 1px 1px 5px #a6a6a6;
+.tools_hint_btn:hover,
+.tag_item:hover
+{
+    box-shadow: none;
+}
+
+.tag_list{
+    display: flex;
+    flex-wrap: wrap;
 }

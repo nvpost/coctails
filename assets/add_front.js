@@ -65,8 +65,11 @@ let addApp = new Vue({
             sort_ingredient_hints: [],
             tools_hints: [],
             name_hints: [],
-            tags:[],
+            tag_list:[],
         }
+    },
+    mounted(){
+        this.getTags();
     },
     methods:{
 
@@ -150,17 +153,14 @@ let addApp = new Vue({
         sort_hint_array(tools, name){
             return tools.slice(0, 5);
         },
-        getTags(part=null){
-            fetch(home_url+'components/add_parts/пуе_hint.php',{
+        getTags(){
+            fetch(home_url+'components/add_parts/get_tags.php',{
                 method: "POST",
-                body: JSON.stringify({'field':field, 'tag':tag})
             })
                 .then(res=>res.json())
                 .then(data => {
-                    console.log(data)
-                    tools = Object.keys(data.res)
-                    // this.ingredient_hints = Object.keys(data.res)
-                    this[field+"_hints"] = Object.keys(data.res)
+                    this.tag_list = Object.keys(data.res)
+
                 })
         },
 
