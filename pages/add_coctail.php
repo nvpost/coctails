@@ -49,14 +49,19 @@ require_once '../config.php';
                 <input
                     type="file"
                     v-model="img_src"
-                    @change = "add_prewiev"
+                    @change = "add_preview"
                     id="img_upload"
                 >
             </div>
             <div class="coctail_tags">
                 <h3>Категории (выбрать одну или несколько)</h3>
                 <div class="tag_list" v-if="tag_list.length>0">
-                    <div class="tag_item" v-for="tag in tag_list">{{tag}}</div>
+                    <div
+                            class="tag_item"
+                            v-for="tag in tag_list"
+                            @click="addTag($event)"
+                            :class="selected_tags.indexOf(tag)>-1?'selected_tag':''"
+                    >{{tag}}</div>
                 </div>
                 <div class="loading" v-else>
                     <img src="assets/icons/Rhombus.gif" alt="">
@@ -96,6 +101,8 @@ require_once '../config.php';
 
             </div>
         </form>
+
+        <button @click="saveData()" :disabled="checkFormData()">Сохранить</button>
 
         <?php
             require_once '../components/add_parts/add_preview.php';

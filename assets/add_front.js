@@ -60,12 +60,15 @@ let addApp = new Vue({
             process_rows: [],
             ing_units: ['мг', 'г', 'шт'],
             img_src:"",
+            imgFile:"",
             existing_coctail: [],
             ingredient_hints: [],
             sort_ingredient_hints: [],
             tools_hints: [],
             name_hints: [],
             tag_list:[],
+            selected_tags:[],
+            fk:{}
         }
     },
     mounted(){
@@ -108,12 +111,29 @@ let addApp = new Vue({
             }
 
         },
-        add_prewiev(event){
+        add_preview(event){
             let file = event.target.files[0]
 
+
+            // провераяем тип файла
+            if (!['image/jpeg', 'image/png', 'image/gif', 'image/svg+xml'].includes(file.type)) {
+                alert('Разрешены только изображения.');
+                event.target.value=""
+                return;
+            }
+
+            // проверим размер файла (<2 Мб)
+            if (file.size > 2 * 1024 * 1024) {
+                alert('Файл должен быть менее 2 МБ.');
+                event.target.value=""
+                return;
+            }
+
+
+            this.imgFile = event.target.files[0]
             var output = document.getElementById('preview_img');
             output.src = URL.createObjectURL(file);
-            console.log(output)
+
         },
         checkItem(field){
 
@@ -137,14 +157,12 @@ let addApp = new Vue({
             // if(tag.length<3){
             //     return false
             // }
-            console.log(field+"_hints")
             fetch(home_url+'components/add_parts/show_hint.php',{
                 method: "POST",
                 body: JSON.stringify({'field':field, 'tag':tag, 'like_flag': like_flag})
             })
                 .then(res=>res.json())
                 .then(data => {
-                    console.log(data)
                     tools = Object.keys(data.res)
                     // this.ingredient_hints = Object.keys(data.res)
                     this[field+"_hints"] = Object.keys(data.res)
@@ -154,32 +172,132 @@ let addApp = new Vue({
             return tools.slice(0, 5);
         },
         getTags(){
-            fetch(home_url+'components/add_parts/get_tags.php',{
-                method: "POST",
-            })
-                .then(res=>res.json())
-                .then(data => {
-                    this.tag_list = Object.keys(data.res)
+            this.tag_list = localStorage.getItem('coctailTags').split(',')
 
+            if(this.tag_list==null){
+                fetch(home_url+'components/add_parts/get_tags.php',{
+                    method: "POST",
                 })
+                    .then(res=>res.json())
+                    .then(data => {
+                        tg = Object.keys(data.res)
+                        this.tag_list = tg
+                        localStorage.setItem('coctailTags', tg)
+
+                    })
+            }
+
+        },
+        addTag(e){
+            tag = e.target.innerText
+            let status = e.target.classList.contains('selected_tag')
+            if(status){
+                this.selected_tags = this.selected_tags.filter(i=>{
+                    return i!=tag
+                })
+            }else{
+                this.selected_tags.push(tag)
+            }
+
+            // console.log(this.selected_tags)
         },
 
 
         setModelFromTag(event, tag){
-            console.log(event.target, tag)
             let row_index = event.target.getAttribute('data-row')
             let model_root = event.target.getAttribute('data-model_root')
             let model_tail = event.target.getAttribute('data-model_tail')
-            // console.log(model_root, row_index, model_tail)
             this[model_root][row_index][model_tail] = tag //ing_row[0].ingredient
 
-            // console.log(this[model_root][row_index][model_tail])
             this[model_tail+"_hints"] = []
+        },
+
+        checkFormData(){
+            let validScore = 0
+            this.coctail_label.length>1 ? validScore++ : false
+            this.ing_rows.length>2 ? validScore++ : false
+            this.tools_rows.length>1 ? validScore++ : false
+            this.process_rows.length>1 ? validScore++ : false
+            this.selected_tags.length>0 ? validScore++ : false
+
+            //TODO проверка на картинку
+
+            let canSend= validScore==5
+            return !canSend;
+
         },
 
 
 
+        saveData(){
+            if(this.coctail_label_en==0){
+                if(confirm('Точно отправить без осмысленного английско названия')){
+                    this.coctail_label_en=this.tranlate_coctail_name(this.coctail_label)
+                }else{
+                    return false
+                }
+            }
+            if(this.coctail_descr==0){
+                if(confirm('Точно отправить без Описания')){
+                    this.coctail_descr=" ";
+                }else{
+                    return false
+                }
+            }
 
-    }
+
+            let formContent = {
+                'coctail_label':this.coctail_label,
+                'coctail_label_en':this.coctail_label_en,
+                'coctail_descr':this.coctail_descr,
+                'ing_rows': JSON.stringify({'ings':this.ing_rows}),
+                'tools_rows': JSON.stringify({'tools': this.tools_rows}),
+                'process_rows': JSON.stringify({'process': this.process_rows}),
+                'tag_list': JSON.stringify({'tags': this.selected_tags}),
+                'img': this.imgFile,
+                'img_name': this.coctail_label_en
+            }
+            this.fk = formContent
+
+            this.sendData(formContent)
+        },
+
+        sendData(formContent){
+
+            var fd = new FormData();
+
+            Object.keys(formContent).forEach(i=>{
+                fd.append(i, formContent[i])
+            })
+
+            console.log(this.imgFile)
+            console.log(fd)
+
+
+            fetch(home_url+'components/add_parts/add_data.php', {
+                method: 'POST',
+                body: fd,
+            })
+                .then(res=>res.json())
+                .then(data=>{
+                    console.log(data)
+                })
+                .catch(error => console.error(error));
+
+            console.log(fd)
+        },
+
+
+        tranlate_coctail_name(name){
+            let timestamp = Date.now()
+            return 'tmp_coctail_name' + timestamp
+        }
+
+
+
+
+
+
+}
 })
 

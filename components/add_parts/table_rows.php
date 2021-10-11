@@ -19,6 +19,7 @@
     <?php }?>
     <?php if(isset($model_tails[1])){ ?>
         <input type="number"
+               min="0"
                class="input_kolvo"
                placeholder="<?=$placeholders[1]?>"
                v-model="<?=$model?>[row_index].<?=$model_tails[1]?>"
