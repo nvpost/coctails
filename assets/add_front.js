@@ -269,9 +269,9 @@ let addApp = new Vue({
             Object.keys(formContent).forEach(i=>{
                 fd.append(i, formContent[i])
             })
-
-            console.log(this.imgFile)
-            console.log(fd)
+            //
+            // console.log(this.imgFile)
+            // console.log(fd)
 
 
             fetch(home_url+'components/add_parts/add_data.php', {
@@ -284,7 +284,6 @@ let addApp = new Vue({
                 })
                 .catch(error => console.error(error));
 
-            console.log(fd)
         },
 
 
