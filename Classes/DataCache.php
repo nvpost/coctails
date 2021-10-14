@@ -32,7 +32,7 @@ class DataCache
 //            $this->setCacheTime(self::DEFAULT_CACHE_TIME);
 //        }
 
-        $this->cacheTime = 10;
+        $this->cacheTime = 3;
 //        if (defined('SiteSettings::dataCacheFolder') && !empty(SiteSettings::dataCacheFolder)) {
 //            $this->cacheFolder = $_SERVER['DOCUMENT_ROOT'] . SiteSettings::dataCacheFolder;
 //        } else {

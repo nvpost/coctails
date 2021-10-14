@@ -9,8 +9,20 @@
 class metaClass
 {
 
+    public $title;
+    public $description;
+
+    public function __construct(){
+
+    }
+
     public function title($title){
-        $title = "<title>{$title}</title>";
-        return $title;
+        $this->title = "<title>{$title}</title>";
+        return $this->title;
+    }
+
+    public function description($descr){
+        $this->description = "<meta name='description' content='{$descr}'>";
+        return $this->description;
     }
 }

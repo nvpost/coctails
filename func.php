@@ -17,18 +17,29 @@ function c_deb($v){
 }
 
 function pdSql($sql, $one=false){
-    global $sql_count;
-    global $db;
-    $res = $db->prepare($sql);
-    $res->execute();
-    if($one){
-        $data = $res->fetch(PDO::FETCH_ASSOC);
-    }else{
-        $data = $res->fetchAll(PDO::FETCH_ASSOC);
-    }
-//    deb(debug_backtrace());
+    $cache_key = $sql;
 
-    $sql_count++;
+    $dataCache= new DataCache($cache_key);
+    $getDataFromCache = $dataCache->initCacheData();
+
+    if(!$getDataFromCache){
+        global $sql_count;
+        global $db;
+        $res = $db->prepare($sql);
+        $res->execute();
+        if($one){
+            $data = $res->fetch(PDO::FETCH_ASSOC);
+        }else{
+            $data = $res->fetchAll(PDO::FETCH_ASSOC);
+        }
+        //deb(debug_backtrace());
+
+        $sql_count++;
+
+        $dataCache->updateCacheData($data);
+    }else{
+        $data=$dataCache->getCacheData();
+    }
 
     return($data);
 }
