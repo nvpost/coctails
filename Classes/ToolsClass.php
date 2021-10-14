@@ -21,7 +21,24 @@ class ToolsClass
     {
         $this->table = $table;
         $this->fields = $fields;
-        $this->tools = $this->getTags($coctail_id);
+
+
+
+
+        $cache_key = $_SERVER['REQUEST_URI'].'_'.$table.'_'.$fields;
+
+        $dataCache= new DataCache($cache_key);
+        $getDataFromCache = $dataCache->initCacheData();
+        if(!$getDataFromCache){
+            $this->tools = $this->getTags($coctail_id);
+            $dataCache->updateCacheData($this->tools);
+        }else{
+
+            $this->tools = $dataCache->getCacheData();
+        }
+
+//        deb($this->tools);
+
     }
 
     private function getTags($coctail_id){

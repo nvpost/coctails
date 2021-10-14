@@ -31,7 +31,7 @@ function drowLoginline(){
     <div class="header_home">
         <a href="<?=$home_url;?>">Главная</a>
     </div>
-    <?=addBotton() ?>
+<!--    --><?//=addBotton() ?>
     <div class="user">
 
         <?=drowLoginline()?>

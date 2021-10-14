@@ -6,6 +6,7 @@ $frontFin = ($page+1)*$limit;
 $set_limit = $page*$limit.", ".$limit;
 
 function drowPagination($c){
+
     global $page;
     global $page_tags;
     global $limit;

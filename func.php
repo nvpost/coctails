@@ -26,6 +26,7 @@ function pdSql($sql, $one=false){
     }else{
         $data = $res->fetchAll(PDO::FETCH_ASSOC);
     }
+//    deb(debug_backtrace());
 
     $sql_count++;
 
@@ -40,6 +41,7 @@ function cid($i){
     return $i['coctail_id'];
 }
 function getCoctailIds($arr){
+//    deb($arr);
     $res = array_map('cid', $arr);
     $res = array_unique($res);
     $res = implode(', ', $res);
