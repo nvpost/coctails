@@ -17,6 +17,8 @@ $qwe -> select('*');
 $qwe -> table('tags');
 $res = $qwe -> all();
 
+
+
 $new_res = [];
 foreach ($res as $key => $val){
     $val['count'] = array_count_values(array_column($res, 'tag'))[$val['tag']];

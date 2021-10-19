@@ -71,7 +71,7 @@ class DataCache
     #-------------------------------------------
     public function setCacheTime( $seconds)
     {
-        echo 'setCacheTime';
+//        echo 'setCacheTime';
         $this->cacheTime = $seconds;
     }
 
@@ -110,7 +110,7 @@ class DataCache
         //echo "updateCacheData";
         if (!$this->cacheEnabled) { return false; }
         $this->cache = $newData;
-        c_deb('set cache');
+//        c_deb('set cache');
         $output = serialize($this->cache);
         if(!@file_exists($this->cacheFullFilePath)) { @mkdir($this->cacheFullFilePath, 0777, true); }
         $fp = @fopen($this->cacheFullFileName, "w");

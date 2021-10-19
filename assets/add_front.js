@@ -37,7 +37,7 @@ let addApp = new Vue({
                 process:{
                     label: 'Как делать',
                     template:{
-                        line: "",
+
                     },
                     front:[
                         {placeholder: 'процесс', type: 'text', model:'process'},

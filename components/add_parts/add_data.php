@@ -17,7 +17,7 @@ $name = $data['coctail_label'];
 $en_name = $data['coctail_label_en'];
 $img_src = saveImg();
 
-$process = 'tmp_data';
+//$process = 'tmp_data';
 $text_info = $data['coctail_descr'];
 
 $approve_status = 0;
@@ -30,8 +30,15 @@ array_pop($ings);
 $tools = json_decode($data['tools_rows'])->tools;
 array_pop($tools);
 
-$process = json_decode($data['process_rows'])->process;
-array_pop($process);
+$process_arr = json_decode($data['process_rows'])->process;
+array_pop($process_arr);
+$tmp_process_arr = [];
+foreach ($process_arr as $p){
+    $tmp_process_arr[] = $p->process_row;
+}
+//$process =
+
+$process = implode("; ", $tmp_process_arr);
 
 $tags = json_decode($data['tag_list'])->tags;
 
@@ -60,16 +67,16 @@ function saveImg(){
     return $img_src;
 }
 
-$res = addToSql_coctail();
+
+
+$insert_coctail_data = addToSql_coctail();
 
 
 function addToSql_coctail(){
-//    get last coctai id
     global $last_id;
     global $next_coctail_id;
 
     global $db;
-    global $coctail_id;
     global $name;
     global $en_name;
     global $img_src;
@@ -79,19 +86,13 @@ function addToSql_coctail(){
     global $user_id;
 
 
+    $sql = "SELECT coctail_id FROM coctails WHERE 1 ORDER BY coctail_id DESC LIMIT 1";
+    $res = $db->prepare($sql);
+    $res->execute();
+    $data = $res->fetch(PDO::FETCH_ASSOC);
+    $last_id = $data['coctail_id'];
 
-    $qwe = new SQLModelClass();
-    $qwe -> table('coctails');
-    $qwe -> select('coctail_id');
-    $qwe -> where("1");
-    $qwe -> orderBy(" coctail_id DESC");
-    $qwe -> limit(1);
-
-
-    $res = $qwe -> all();
-    $last_id = (int)$res[0]['coctail_id'];
     $next_coctail_id = $last_id+1;
-
 
     $ex_data=[
         $next_coctail_id,
@@ -107,19 +108,98 @@ function addToSql_coctail(){
 
 
 
-    $sql = "INSERT INTO coctails (coctail_id, name, en_name, src, process, text_info, approve_status, user_id) 
+    $sql = "INSERT INTO coctails (coctail_id, name, en_name, src, process, text_info, approve_status, user_id)
         VALUES (?,?,?,?,?,?,?,?)";
     $stmt= $db->prepare($sql);
     $stmt->execute($ex_data);
 
-    return [$last_id, $next_coctail_id, $ex_data];
+
+
+
+
+
+    return ['next_coctail_id'=>$next_coctail_id, 'ex_data'=>$ex_data];
+
+//    return $data;
 }
-//'ext'=>$ext,
-//    'target_file'=>$target_file,
-//    'file'=>$file,
+
+$add_ing = addToSql_ing();
+
+function addToSql_ing(){
+    global $insert_coctail_data;
+    global $ings;
+    global $db;
+
+    $coctail_id = $insert_coctail_data['next_coctail_id'];
+    $res = $coctail_id;
+    foreach ($ings as $ing){
+
+        $sql = "INSERT INTO ingredients (coctail_id, ingredient, amount, unit) VALUES (?,?,?,?)";
+        $res = $db->prepare($sql);
+        $res->execute([
+            $coctail_id,
+            checkQoery($ing->ingredient),
+            checkQoery($ing->amount),
+            checkQoery($ing->unit)
+        ]);
+    }
+    return $res;
+}
+
+$add_tools = addToSql_tools();
+
+function addToSql_tools(){
+    global $insert_coctail_data;
+    global $tools;
+    global $db;
+
+    $coctail_id = $insert_coctail_data['next_coctail_id'];
+    $res = $coctail_id;
+    foreach ($tools as $tool){
+
+        $sql = "INSERT INTO tools (coctail_id, name, amount, unit) VALUES (?,?,?,?)";
+        $res = $db->prepare($sql);
+        $res->execute([
+            $coctail_id,
+            checkQoery($tool->name),
+            checkQoery($tool->amount),
+            checkQoery($tool->unit)
+        ]);
+    }
+    return $res;
+}
+
+$add_tags = addToSql_tags();
+
+function addToSql_tags(){
+    global $insert_coctail_data;
+    global $tags;
+    global $db;
+
+    $coctail_id = $insert_coctail_data['next_coctail_id'];
+    $res = $coctail_id;
+    foreach ($tags as $tag){
+
+        $sql = "INSERT INTO tags (coctail_id, tag) VALUES (?,?)";
+        $res = $db->prepare($sql);
+        $res->execute([
+            $coctail_id,
+            checkQoery($tag),
+        ]);
+    }
+    return $res;
+}
+
+function checkQoery($s){
+    return $s;
+}
+
+
+//TODO Проверка на момент отправки
 
 echo json_encode(['data' => $data,
-    'res'=>$res,
+    'add_ing'=>$add_ing,
+    'res'=>$insert_coctail_data,
     'img_src'=>$img_src,
     'ings'=>$ings,
     'tools'=>$tools,
