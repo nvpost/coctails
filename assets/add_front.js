@@ -68,7 +68,8 @@ let addApp = new Vue({
             name_hints: [],
             tag_list:[],
             selected_tags:[],
-            fk:{}
+            fk:{},
+            new_coctail_link: ''
         }
     },
     mounted(){
@@ -275,9 +276,6 @@ let addApp = new Vue({
             Object.keys(formContent).forEach(i=>{
                 fd.append(i, formContent[i])
             })
-            //
-            // console.log(this.imgFile)
-            // console.log(fd)
 
 
             fetch(home_url+'components/add_parts/add_data.php', {
@@ -287,6 +285,7 @@ let addApp = new Vue({
                 .then(res=>res.json())
                 .then(data=>{
                     console.log(data)
+                    this.new_link = data.coctail_label_en
                 })
                 .catch(error => console.error(error));
 

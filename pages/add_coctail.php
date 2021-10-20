@@ -16,7 +16,18 @@ require_once '../config.php';
 </head>
 <body>
 <div class="add_app container" id="add_app">
-    <div class="add_form">
+
+    <div class="show_added_coctail" v-if="new_coctail_link">
+        <p>Добавили, посмотрим ?
+            <a :href="'coctail/'+existing_coctail.en_name"
+               target="_blank"
+            >
+                {{coctail_label}} ({{coctail_label_en}})
+            </a> <i class="fas fa-window-restore"></i></p>
+    </div>
+    <div class="add_form" v-else>
+
+
         <form action="">
             <div class="add_form_main_info">
                 <div class="main_info_label">
