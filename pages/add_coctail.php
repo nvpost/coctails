@@ -24,18 +24,19 @@ require_once '../config.php';
                            class="coctail_label"
                            placeholder="Название*"
                            v-model="coctail_label"
-                           @blur="checkItem('coctail_label')"
+                           @blur="checkItem('coctail_label', 'ru')"
                     >
                     <input type="text" name="coctail_label_en"
                            class="coctail_label_en"
                            placeholder="Название (eng)"
                            v-model="coctail_label_en"
+                           @blur="checkItem('coctail_label_en', 'en')"
                     >
 
                 </div>
                 <div class="existing_coctail" v-if="existing_coctail.name">
                     <p>Такой уже есть
-                        <a href="/coctail/{{existing_coctail.en_name}"
+                        <a :href="'coctail/'+existing_coctail.en_name"
                            target="_blank"
                         >
                             {{existing_coctail.name}} ({{existing_coctail.en_name}})

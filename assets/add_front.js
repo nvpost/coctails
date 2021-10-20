@@ -137,13 +137,19 @@ let addApp = new Vue({
         },
         checkItem(field){
 
+
             let name = this[field]
+
+            if(name.length<2){
+                return false
+            }
             fetch(home_url+'components/add_parts/check_data.php',{
                 method: "POST",
                 body: JSON.stringify({'field':field, 'name':name})
             })
                 .then(res=>res.json())
                 .then(data => {
+                    console.log(data)
                     if(data.res.length!=0){
                         console.log('Уже есть')
                         console.log(data.res)
