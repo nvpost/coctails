@@ -3,15 +3,17 @@ session_start();
 $user=false;
 require_once 'auth/auth_data.php';
 require_once "header_parts/add_button.php";
+require_once "header_parts/login_bar.php";
 
 if(isset($_SESSION['user'])){
     $user = $_SESSION['user'];
-    // deb($user);
+    //deb($user);
 }
 
 
 function drowLoginline(){
     global $user;
+
     if($user){
         $user_bar_html = userBar();
         return $user_bar_html;

@@ -1,4 +1,11 @@
 <?php
+session_start();
+
+if(!isset($_SESSION['user'])){
+    echo "Закрыто";
+    die();
+}
+
 require_once '../config.php';
 
 ?>

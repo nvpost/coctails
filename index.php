@@ -27,6 +27,9 @@ if(isset($_GET['page'])){
             require_once 'components/page_meta.php';
         ?>
 
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <link rel="shortcut icon" href="assets/icons/favicon-96x96.png" type="image/png">
+
 <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
 <script src="https://unpkg.com/vue-multiselect@2.1.0" type="application/javascript"></script>
 <link rel="stylesheet" href="https://unpkg.com/vue-multiselect@2.1.0/dist/vue-multiselect.min.css">
