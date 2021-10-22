@@ -11,6 +11,10 @@ a{
     color: black;
     transition: 0.2s;
 }
+img{
+    width: 100%;
+}
+
 a:hover{
     text-shadow: 1px 1px #afafaf;
 }
@@ -191,13 +195,16 @@ a.active_page{
 
 
 /*coctail_page*/
-.coctail_item{
-    width: 800px;
-    margin: auto;
-}
+/*.coctail_item{*/
+/*    width: 800px;*/
+/*    margin: auto;*/
+/*}*/
 .coctail_start_content{
     display: flex;
     justify-content: space-between;
+}
+.coctail_page_img img{
+
 }
 .coctail_page_content>div{
     flex:1;
@@ -341,4 +348,11 @@ a.active_page{
 }
 .publicly_rating{
     margin-left: 10px;
+}
+
+
+@media (max-width: 800px) {
+    .coctail_start_content{
+        display: block;
+    }
 }
