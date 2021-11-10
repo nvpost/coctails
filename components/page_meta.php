@@ -1,7 +1,7 @@
 <?php
 
 $main_title = "Коктейли. Рецепты и ингредиенты";
-$main_short_title = "Коктейль ";
+$main_short_title = "Коктейль";
 
 
 
@@ -16,8 +16,11 @@ if(!$filters){
     $coctail_data = getCoctailData($coctail_en_name);
     if($coctail_data){
         $coctail_name = $coctail_data['name'];
+        $en_coctail_name = $coctail_data['en_name'];
 
-        $title = $main_short_title.". ".$coctail_name.' | Рецепт коктейля '.$coctail_name;
+        $сomposite_name = $main_short_title." ".$coctail_name.' ('.$en_coctail_name.')';
+
+        $title = $сomposite_name.' | Рецепт коктейля '.$coctail_name;
         $descr = (strlen($coctail_data['text_info'])>2) ? doDescr($coctail_data['text_info']) : doDescr($coctail_data['process']);
 
         echo $meta->title($title);
